@@ -3,10 +3,11 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] })
+const fullPageClass = 'w-full h-full' as const;
 
 export const metadata: Metadata = {
-  title: 'BOC Hackathon project',
-  description: 'Clindren Financial Literacy app',
+  title: 'BOC Hackathon Project',
+  description: 'Children Financial Literacy App',
 }
 
 export default function RootLayout({
@@ -15,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='w-full h-full'>
-      <body className={inter.className + ' w-full h-full'}>{children}</body>
+    <html lang="en" className={fullPageClass}>
+      <body className={[inter.className, fullPageClass].join(' ')}>{children}</body>
     </html>
   )
 }
