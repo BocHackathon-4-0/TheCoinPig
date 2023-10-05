@@ -11,18 +11,17 @@ from urllib.parse import urlencode
 
 from django.http import JsonResponse
 from rest_framework.views import APIView
+import json
 
 class encodedTest(APIView):
     def get(self, request):
-        # Data to be URL-encoded (a dictionary of key-value pairs)
-        data = {'param1': 'value1', 'param2': 'value2'}
+        # Data to be encoded into JSON
+        data = {'key1': 'value1', 'key2': 'value2'}
 
-        # URL-encode the data
-        encoded_data = urlencode(data)
+        # Encode the data into JSON format
+        encoded_data = json.dumps(data)
 
-        # Create a response with the encoded data
-        response_data = {
-            'encoded_data': encoded_data
-        }
+        # Set the Content-Type header to indicate JSON encoding
+        response = JsonResponse(encoded_data, content_type='application/json')
 
-        return JsonResponse(response_data)
+        return response
