@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Add any other allowed origins as needed
+    '*' # Add any other allowed origins as needed
 ]
 
 # Allow credentials (cookies, authorization headers, etc.) to be included with requests
