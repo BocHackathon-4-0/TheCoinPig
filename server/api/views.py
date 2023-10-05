@@ -25,4 +25,4 @@ class encodedTest(APIView):
             'encoded_data': encoded_data
         }
 
-        return JsonResponse(encoded_data)
+        return JsonResponse(response_data)
