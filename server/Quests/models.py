@@ -52,6 +52,7 @@ class Quest(models.Model):
     # investments_unlocks = models.ManyToManyField('Investments.Investment', blank=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, blank=True, null=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True, null=True)
+    reward = models.FloatField(default=0)
 
     is_active = models.BooleanField(default=True)
 
