@@ -70,11 +70,3 @@ class Quest(models.Model):
 
     def __str__(self):
         return self.name
-    
-# class CompleteQuests(models.Model):
-#     user = models.ForeignKey('MyUsers.ChildUser', on_delete=models.CASCADE)
-#     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
-#     is_completed = models.BooleanField(default=False)
-
-#     def __str__(self):
-#         return f"{self.user} - {self.quest}"
