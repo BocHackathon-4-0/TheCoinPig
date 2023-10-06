@@ -1,21 +1,14 @@
-'use client';
+"use client";
 
-import { COOKIE_OPTIONS } from "@/shared/constants";
-import { TCookies } from "@/shared/types";
+import { useCookies } from "@/hooks/useCookies";
 import { useRouter } from "next/navigation";
-import { useCookies } from "react-cookie";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-
+export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
-    const [cookies] = useCookies<string, TCookies>(COOKIE_OPTIONS);
+    const [cookies] = useCookies();
 
     if (cookies.auth === undefined) {
-        router.replace('/login');
+        router.replace("/login");
     }
 
     return children;
