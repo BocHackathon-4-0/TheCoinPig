@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { TGoal } from "@/shared/types";
 import { ChangeEventHandler, MouseEvent } from "react";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 type TGoalsTableProps = {
     count: number;
@@ -71,6 +73,7 @@ export const GoalsTable = (props: TGoalsTableProps) => {
                             <TableCell>Title</TableCell>
                             <TableCell>Description</TableCell>
                             <TableCell>Amount</TableCell>
+                            <TableCell>Achieved</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -100,6 +103,13 @@ export const GoalsTable = (props: TGoalsTableProps) => {
                                         {goal.description ?? ""}
                                     </TableCell>
                                     <TableCell>{goal.amount}</TableCell>
+                                    <TableCell>
+                                        {goal.achieved ? (
+                                            <DoneIcon color="success" />
+                                        ) : (
+                                            <CloseIcon color="error" />
+                                        )}
+                                    </TableCell>
                                 </TableRow>
                             );
                         })}
