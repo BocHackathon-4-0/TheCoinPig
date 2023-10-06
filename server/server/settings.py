@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
+    'MyUsers',
     'corsheaders',
     'Quests',
     'Goals',
@@ -121,6 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'MyUsers.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

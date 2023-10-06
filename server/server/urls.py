@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from MyUsers.views import (
+    CheckUserCredentials
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('validate_user/', CheckUserCredentials.as_view()),
 ]
