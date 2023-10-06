@@ -1,8 +1,9 @@
 'use client';
 
-import { ThemeProvider, createTheme, Theme } from "@mui/material";
+import { ThemeProvider, createTheme, Theme } from "@mui/material/styles";
 import { CookiesProvider } from "react-cookie";
 import { useEffect, useState } from "react";
+import { SnackbarProvider } from "notistack";
 
 export default function Layout({
   children,
@@ -13,18 +14,20 @@ export default function Layout({
     const [theme, setTheme] = useState<Theme | null>(null);
 
     useEffect(() => {
-        setTheme(createTheme({  }));
+        setTheme(createTheme());
     }, []);
 
     if (theme === null) return <></>;
 
     return (
         <CookiesProvider defaultSetOptions={{ path: '/' }}>
-            <ThemeProvider theme={theme}>
-                <div className="bg-white w-full h-full">
-                    {children}
-                </div>
-            </ThemeProvider>
+            <SnackbarProvider>
+                <ThemeProvider theme={theme}>
+                    <div className="bg-white w-full h-full">
+                        {children}
+                    </div>
+                </ThemeProvider>
+            </SnackbarProvider>
         </CookiesProvider>
     );
 }
