@@ -17,6 +17,6 @@ export type TGoal = {
     id: string;
     title: string;
     description?: string;
-    amount: string;
+    amount: number;
     achieved: boolean;
 };
