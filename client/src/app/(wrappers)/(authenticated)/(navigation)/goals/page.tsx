@@ -210,7 +210,7 @@ const Page = () => {
                         justifyContent="space-between"
                         spacing={4}
                     >
-                        <Typography variant="h4">Customers</Typography>
+                        <Typography variant="h4">Goals</Typography>
                         <Stack direction="row" spacing={1}>
                             <Card>
                                 <OutlinedInput
