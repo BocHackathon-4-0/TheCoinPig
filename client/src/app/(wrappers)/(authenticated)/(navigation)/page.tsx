@@ -1,5 +1,7 @@
 import { OverviewBalance } from "@/components/overview-balance";
+import { OverviewGoals } from "@/components/overview-goals";
 import { OverviewInvestments } from "@/components/overview-investments";
+import { OverviewQuests } from "@/components/overview-quests";
 import { Box, Container, Grid } from "@mui/material";
 
 export default function Home() {
@@ -11,25 +13,19 @@ export default function Home() {
                 py: 8,
             }}
         >
-            <Container maxWidth="xl">
-                <Grid container gap={3} spacing={3}>
-                    <Grid xs={12} sm={6} lg={3}>
+            <Container>
+                <Grid container gap={2}>
+                    <Grid xs={12} sm>
                         <OverviewBalance sx={{ height: "100%" }} />
                     </Grid>
-                    <Grid xs={12} sm={6} lg={3}>
+                    <Grid xs={12} sm>
                         <OverviewInvestments sx={{ height: "100%" }} />
                     </Grid>
-                    <Grid xs={12} sm={6} lg={3}>
-                        {/* <OverviewTasksProgress
-                            sx={{ height: "100%" }}
-                            value={75.5}
-                        /> */}
+                    <Grid xs={12} sm>
+                        <OverviewQuests sx={{ height: "100%" }} />
                     </Grid>
-                    <Grid xs={12} sm={6} lg={3}>
-                        {/* <OverviewTotalProfit
-                            sx={{ height: "100%" }}
-                            value="$15k"
-                        /> */}
+                    <Grid xs={12} sm>
+                        <OverviewGoals sx={{ height: "100%" }} />
                     </Grid>
                     <Grid xs={12} lg={8}>
                         {/* <OverviewSales
