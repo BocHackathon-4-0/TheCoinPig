@@ -46,14 +46,20 @@ export default function NavBar() {
         setAnchorElUser(null);
     };
 
+    const pushToHome = () => {
+        router.push("/");
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <LogoIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                        onClick={pushToHome}
                     />
                     <Typography
+                        onClick={pushToHome}
                         variant="h6"
                         noWrap
                         component="a"
