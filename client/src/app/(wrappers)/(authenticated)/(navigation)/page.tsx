@@ -1,4 +1,5 @@
 import { OverviewBalance } from "@/components/overview-balance";
+import { OverviewInvestments } from "@/components/overview-investments";
 import { Box, Container, Grid } from "@mui/material";
 
 export default function Home() {
@@ -11,17 +12,12 @@ export default function Home() {
             }}
         >
             <Container maxWidth="xl">
-                <Grid container spacing={3}>
+                <Grid container gap={3} spacing={3}>
                     <Grid xs={12} sm={6} lg={3}>
                         <OverviewBalance sx={{ height: "100%" }} />
                     </Grid>
                     <Grid xs={12} sm={6} lg={3}>
-                        {/* <OverviewTotalCustomers
-                            difference={16}
-                            positive={false}
-                            sx={{ height: "100%" }}
-                            value="1.6k"
-                        /> */}
+                        <OverviewInvestments sx={{ height: "100%" }} />
                     </Grid>
                     <Grid xs={12} sm={6} lg={3}>
                         {/* <OverviewTasksProgress
