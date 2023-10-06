@@ -3,3 +3,7 @@ export type TAccount = {
     password: string,
     permissions: 'parent' | 'child',
 }
+
+export type TCookies = {
+    auth?: TAccount;
+}

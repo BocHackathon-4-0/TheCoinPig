@@ -11,4 +11,6 @@ export const ACCOUNTS: TAccount[] = [
         password: '1234',
         permissions: 'child',
     },
-]
+];
+
+export const COOKIE_OPTIONS = ['auth'];
