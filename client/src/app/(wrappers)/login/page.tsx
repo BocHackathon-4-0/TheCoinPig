@@ -8,12 +8,17 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { ACCOUNTS } from '@/shared/constants';
+import { ACCOUNTS, COOKIE_OPTIONS } from '@/shared/constants';
 import { useSnackbar } from 'notistack';
+import { useCookies } from 'react-cookie';
+import { TCookies } from '@/shared/types';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
+    const router = useRouter();
     const { enqueueSnackbar } = useSnackbar();
+    const [_, setCookie] = useCookies<string, TCookies>(COOKIE_OPTIONS);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -27,17 +32,19 @@ export default function Login() {
     const account = ACCOUNTS.find(account => account.username === username);
 
     if (account === undefined || account.password !== password) {
+
         enqueueSnackbar('Invalid details!', { variant: 'error' });
         event.currentTarget.reset();
         return;
     }
 
-    // Save cookie here
+    setCookie('auth', account);
+    router.push('/');
 
   };
 
   return (
-      <Container component="main" maxWidth="xs" sx={{ backgroundColor: 'white' }} className='w-full h-full'>
+      <Container component="div" sx={{ backgroundColor: 'white', height: '100%', width: '100%' }}>
         <Box
           sx={{
             width: '100%',
@@ -59,10 +66,10 @@ export default function Login() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField
