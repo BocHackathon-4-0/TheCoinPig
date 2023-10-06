@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 type TOverviewProps = {
-    sx: SxProps<Theme>;
+    sx?: SxProps<Theme>;
 };
 
 export const OverviewBalance = ({ sx }: TOverviewProps) => {
