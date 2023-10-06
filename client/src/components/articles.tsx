@@ -46,7 +46,7 @@ export default function ArticlesGrid() {
                                     <Image
                                         src={post.icon}
                                         alt={post.description}
-                                        className="aspect-[16/9] object-cover sm:aspect-[2/1] lg:aspect-[3/2] group-hover:scale-110 sm:group-hover:scale-105 duration-300 z-0"
+                                        className="aspect-[16/9] object-cover sm:aspect-[2/1] lg:aspect-[5/2] group-hover:scale-110 sm:group-hover:scale-105 duration-300 z-0"
                                     />
                                 </div>
                                 <div className=" bg-white p-4 w-[100%]">
