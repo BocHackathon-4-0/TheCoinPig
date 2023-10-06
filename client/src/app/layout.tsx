@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={fullPageClass}>
-      <body className={[inter.className, fullPageClass].join(' ')}>{children}</body>
+    <html lang="en" className={fullPageClass + ' bg-white'}>
+      <body className={[inter.className, fullPageClass, 'bg-white'].join(' ')}>{children}</body>
     </html>
   )
 }
