@@ -8,29 +8,23 @@ const posts = [
     {
         id: 1,
         title: 'Title goes here',
-        href: '#',
+        href: 'quests/learning-page',
         description:'Article description goes here',
         icon: ArticleSampleImage1,
-        date: 'Article date',
-        category: { title: 'Tech', href: '#' },
     },
     {
         id: 2,
         title: 'Title goes here',
-        href: '#',
+        href: 'quests/learning-page',
         description:'Article description goes here',
         icon: ArticleSampleImage2, 
-        date: 'Article date',
-        category: { title: 'News', href: '#' },
     },
     {
         id: 3,
         title: 'Title goes here',
-        href: '#',
+        href: 'quests/learning-page',
         description:'Article description goes here',
         icon: ArticleSampleImage3,
-        date: 'Article date',
-        category: { title: 'Health', href: '#' },
     },
 ];
 
