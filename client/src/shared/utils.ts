@@ -14,3 +14,11 @@ export function getInitials(inputString: string): string {
     const initials = words.map((word) => word.charAt(0).toUpperCase());
     return initials.join("");
 }
+
+export function applyPagination<T>(
+    recs: T[],
+    page: number,
+    rowsPerPage: number
+) {
+    return recs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+}
