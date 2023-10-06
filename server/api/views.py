@@ -26,3 +26,21 @@ class encodedTest(APIView):
         }
 
         return JsonResponse(response_data)
+    
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Person
+from .serializers import PersonSerializer
+
+@api_view(['POST'])
+def create_person(request):
+    if request.method == 'POST':
+        serializer = PersonSerializer(data=request.data)
+        if serializer.is_valid():
+            # Save the person object with the provided name
+            name = serializer.validated_data.get('name')
+            person = Person(name=name)
+            person.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
