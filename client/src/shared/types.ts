@@ -12,3 +12,11 @@ export type TNavBarOptions = {
     path: string;
     label: string;
 };
+
+export type TGoal = {
+    id: string;
+    title: string;
+    description?: string;
+    amount: string;
+    achieved: boolean;
+};
