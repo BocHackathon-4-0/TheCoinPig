@@ -12,7 +12,7 @@ export default function Page() {
                         <div className="grid grid-cols-12 gap-4">
                         {/* Stock Card 1 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-md p-4">
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
                                 <div className="flex flex-col flex-grow ml-4">
                                     <div className="text-sm text-gray-500">
                                         <div className="col-span-12 lg:col-span-8">
@@ -29,7 +29,7 @@ export default function Page() {
 
                         {/* Stock Card 2 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded p-4">
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
                             <div className="flex flex-col flex-grow ml-4">
                                 <div className="text-sm text-gray-500">
                                 <div className="col-span-12 lg:col-span-8">
@@ -46,7 +46,7 @@ export default function Page() {
 
                         {/* Stock Card 3 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded p-4">
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
                             <div className="flex flex-col flex-grow ml-4">
                                 <div className="text-sm text-gray-500">
                                 <div className="col-span-12 lg:col-span-8">
@@ -63,8 +63,8 @@ export default function Page() {
 
                         {/* Create New Card */}
                         <button className="col-span-12 sm:col-span-6 md:col-span-3 group">
-                            <div className="flex flex-row bg-white shadow-sm rounded">
-                            <div id="empty-cover-art" className="py-5 h-full rounded sm:w-full text-center opacity-50 md:border-solid md:border-2 md:border-gray-400">
+                            <div className="flex flex-row bg-white shadow-sm rounded-xl">
+                            <div id="empty-cover-art" className="py-5 h-full rounded-xl sm:w-full text-center opacity-50 md:border-solid md:border-2 md:border-gray-400">
                                 <center>
                                 <svg width="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-black group-hover:scale-125 duration-300">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -99,36 +99,36 @@ export default function Page() {
                 </header>
                 <div className="flex items-center">
                     <div className="p-4 w-full">
-                        <div className="grid grid-cols-12 gap-4">
+                    <div className="grid grid-cols-12 gap-4">
                         {/* Stock Card 1 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded p-4">
-                            <div className="flex flex-col flex-grow ml-4">
-                                <div className="text-sm text-gray-500">
-                                <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="inline-block rounded-full text-black text-xs font-bold">
-                                    SAVAS WITH ONE V
-                                    </a>
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
+                                <div className="flex flex-col flex-grow ml-4">
+                                    <div className="text-sm text-gray-500">
+                                        <div className="col-span-12 lg:col-span-8">
+                                            <a href="#" className="inline-block rounded-full text-white bg-blue-700 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                                                Savas with 1 v
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="font-bold text-lg text-black">€91,000.00</div>
+                                    <span className="text-red-500">▲ 2.48%</span>
                                 </div>
-                                </div>
-                                <div className="font-bold text-lg text-black">€31,097.97</div>
-                                <span className="text-gray-500">- 0.00%</span>
-                            </div>
                             </div>
                         </div>
 
                         {/* Stock Card 2 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded p-4">
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
                             <div className="flex flex-col flex-grow ml-4">
                                 <div className="text-sm text-gray-500">
                                 <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="inline-block rounded-full text-black text-xs font-bold">
-                                    FARAIL
+                                    <a href="#" className="inline-block rounded-full text-white bg-black text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                                        Farail
                                     </a>
                                 </div>
                                 </div>
-                                <div className="font-bold text-lg text-black">€3,824.68</div>
+                                <div className="font-bold text-lg text-black">€880.02</div>
                                 <span className="text-gray-500">- 0.00%</span>
                             </div>
                             </div>
@@ -136,25 +136,25 @@ export default function Page() {
 
                         {/* Stock Card 3 */}
                         <div className="col-span-12 sm:col-span-6 md:col-span-3">
-                            <div className="flex flex-row bg-gray-200 shadow-sm rounded p-4">
+                            <div className="flex flex-row bg-gray-200 shadow-sm rounded-xl p-4">
                             <div className="flex flex-col flex-grow ml-4">
                                 <div className="text-sm text-gray-500">
                                 <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="inline-block rounded-full text-black text-xs font-bold">
-                                    NIKKOLAS
+                                    <a href="#" className="inline-block rounded-full text-black ring-black ring-2 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                                        Nikkolas
                                     </a>
                                 </div>
                                 </div>
-                                <div className="font-bold text-lg text-black">€13,201.98</div>
-                                <span className="text-red-500">▲ 1.03%</span>
+                                <div className="font-bold text-lg text-black">€3,148.45</div>
+                                <span className="text-blue-500">▼ 0.12%</span>
                             </div>
                             </div>
                         </div>
 
                         {/* See More Card */}
-                        <div className="col-span-12 sm:col-span-6 md:col-span-3 group">
-                            <div className="flex flex-row bg-white shadow-sm rounded">
-                            <div id="empty-cover-art" className="py-3 h-full rounded sm:w-full text-center opacity-50 md:border-solid md:border-2 md:border-gray-400">
+                        <button className="col-span-12 sm:col-span-6 md:col-span-3 group">
+                            <div className="flex flex-row bg-white shadow-sm rounded-xl">
+                            <div id="empty-cover-art" className="py-5 h-full rounded-xl sm:w-full text-center opacity-50 md:border-solid md:border-2 md:border-gray-400">
                                 <center>
                                 <svg width="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-black group-hover:scale-125 duration-300">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
@@ -163,16 +163,16 @@ export default function Page() {
                                 <div className="text-black">See More</div>
                             </div>
                             </div>
-                        </div>
+                        </button>
                         </div>
                     </div>
                 </div>
                 <div className="bg-white pt-12 pb-24">
-                    <div className="mx-auto w-7xl px-6 lg:px-8">
+                    <div className="mx-auto w-7xl px-4">
                         <div className="mx-auto max-w-2xl sm:text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Purchase Options</h2>
+                        <h2 className="mx-auto text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Purchase Options</h2>
                         </div>
-                        <div className="mx-auto mt-16 max-w-2xl rounded-3xl bg-gray-200 sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
+                        <div className="mt-16 rounded-xl bg-gray-200 sm:mt-10 lg:mx-0 lg:flex lg:w-7xl">
                         <div className="p-8 sm:p-10 lg:flex-auto">
                             <h3 className="text-2xl font-bold tracking-tight text-gray-900">The safe option</h3>
                             <p className="mt-6 text-base leading-7 text-gray-600">Lorem ipsum blip blop description</p>
