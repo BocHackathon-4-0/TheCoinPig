@@ -21,5 +21,5 @@ from . import views
 urlpatterns = [
     path('test/', views.test),
     path('encodedTest/', views.encodedTest.as_view()),
-    path('api/create_person/', views.create_person, name='create_person'),
+    path('create_person/', views.create_person, name='create_person'),
 ]
