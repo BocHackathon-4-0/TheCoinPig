@@ -1,0 +1,120 @@
+import {
+    Box,
+    Card,
+    Checkbox,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TablePagination,
+    TableRow,
+} from "@mui/material";
+import { TGoal } from "@/shared/types";
+import { ChangeEventHandler, MouseEvent } from "react";
+
+type TGoalsTableProps = {
+    count: number;
+    data: TGoal[];
+    onDeselectAll: () => void;
+    onDeselectOne: (item: string) => void;
+    onSelectAll: () => void;
+    onSelectOne: (item: string) => void;
+    onPageChange: (
+        event: MouseEvent<HTMLButtonElement> | null,
+        page: number
+    ) => void;
+    onRowsPerPageChange: ChangeEventHandler<
+        HTMLInputElement | HTMLTextAreaElement
+    >;
+    page: number;
+    rowsPerPage: number;
+    selected: string[];
+};
+
+export const GoalsTable = (props: TGoalsTableProps) => {
+    const {
+        count = 0,
+        data = [],
+        onDeselectAll,
+        onDeselectOne,
+        onPageChange = () => {},
+        onRowsPerPageChange,
+        onSelectAll,
+        onSelectOne,
+        page = 0,
+        rowsPerPage = 0,
+        selected = [],
+    } = props;
+
+    const selectedSome = selected.length > 0 && selected.length < data.length;
+    const selectedAll = data.length > 0 && selected.length === data.length;
+
+    return (
+        <Card sx={{ borderRadius: 3 }}>
+            <Box sx={{ minWidth: 800 }}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell padding="checkbox">
+                                <Checkbox
+                                    checked={selectedAll}
+                                    indeterminate={selectedSome}
+                                    onChange={(event) => {
+                                        if (event.target.checked) {
+                                            onSelectAll?.();
+                                        } else {
+                                            onDeselectAll?.();
+                                        }
+                                    }}
+                                />
+                            </TableCell>
+                            <TableCell>Title</TableCell>
+                            <TableCell>Description</TableCell>
+                            <TableCell>Amount</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {data.map((goal) => {
+                            const isSelected = selected.includes(goal.id);
+
+                            return (
+                                <TableRow
+                                    hover
+                                    key={goal.id}
+                                    selected={isSelected}
+                                >
+                                    <TableCell padding="checkbox">
+                                        <Checkbox
+                                            checked={isSelected}
+                                            onChange={(event) => {
+                                                if (event.target.checked) {
+                                                    onSelectOne?.(goal.id);
+                                                } else {
+                                                    onDeselectOne?.(goal.id);
+                                                }
+                                            }}
+                                        />
+                                    </TableCell>
+                                    <TableCell>{goal.title}</TableCell>
+                                    <TableCell>
+                                        {goal.description ?? ""}
+                                    </TableCell>
+                                    <TableCell>{goal.amount}</TableCell>
+                                </TableRow>
+                            );
+                        })}
+                    </TableBody>
+                </Table>
+            </Box>
+            <TablePagination
+                component="div"
+                count={count}
+                onPageChange={onPageChange}
+                onRowsPerPageChange={onRowsPerPageChange}
+                page={page}
+                rowsPerPage={rowsPerPage}
+                rowsPerPageOptions={[5, 10, 25]}
+            />
+        </Card>
+    );
+};
