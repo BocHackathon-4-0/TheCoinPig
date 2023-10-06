@@ -13,12 +13,16 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LogoIcon from "@mui/icons-material/AccountBalance";
 import { useCookies } from "@/hooks/useCookies";
+import { NAVBAR_OPTIONS } from "@/shared/constants";
+import { useRouter } from "next/navigation";
+import { getInitials } from "@/shared/utils";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function NavBar() {
     const [cookies, _, remove] = useCookies();
+    const router = useRouter();
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
         null
@@ -100,13 +104,13 @@ export default function NavBar() {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            {pages.map((page) => (
+                            {NAVBAR_OPTIONS.map((option) => (
                                 <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                                    key={option.path}
+                                    onClick={() => router.push(option.path)}
                                 >
                                     <Typography textAlign="center">
-                                        {page}
+                                        {option.label}
                                     </Typography>
                                 </MenuItem>
                             ))}
@@ -139,13 +143,13 @@ export default function NavBar() {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        {pages.map((page) => (
+                        {NAVBAR_OPTIONS.map((option) => (
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={option.path}
+                                onClick={() => router.push(option.path)}
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
-                                {page}
+                                {option.label}
                             </Button>
                         ))}
                     </Box>
@@ -156,10 +160,10 @@ export default function NavBar() {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/static/images/avatar/2.jpg"
-                                />
+                                <Avatar>
+                                    {cookies.auth?.username !== undefined &&
+                                        getInitials(cookies.auth.username)}
+                                </Avatar>
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -178,16 +182,16 @@ export default function NavBar() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem onClick={() => router.push("/settings")}>
+                                <Typography textAlign="center">
+                                    Settings
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem onClick={() => remove("auth")}>
+                                <Typography textAlign="center">
+                                    Log Out
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>
