@@ -33,5 +33,23 @@ class getInvestments(APIView):
 
         return Response(investmentsList, status=status.HTTP_200_OK)
     
-# class createInvestment
+class createInvestment(APIView):
+    def post(self, request):
+        uid = request.data.get("uid")
+        product_id = request.data.get("product_id")
+        amount = request.data.get("amount")
+
+        user = get_object_or_404(ChildUser, id=uid)
+        product = get_object_or_404(InvestmentProduct, id=product_id)
+
+        if user.balance < float(amount):
+            return Response({"message": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST)
+
+        user.balance -= float(amount)
+        user.save()
+
+        investment = Investment.objects.create(user=user, product=product, start_amount=amount)
+        investment.save()
+
+        return Response({"message": "Investment created successfully"}, status=status.HTTP_200_OK)
 
