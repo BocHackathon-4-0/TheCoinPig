@@ -70,7 +70,7 @@ class Investment(models.Model):
         self.user.balance -= float(amount)
 
     def reward_distribution(self):
-        self.user.balance += self.reward
+        self.user.balance += self.start_amount + self.reward
         if self.user.parent.balance >= self.reward:
             self.user.parent.balance -= self.reward
             
@@ -96,7 +96,7 @@ class NoticeInvestment(Investment):
         try:
             self.user.balance -= self.product.penalty
         except:
-            pass
+            print("Error on withdraw on notice penalty fee")
     
 
     def NoticeWithdraw(self, amount):
