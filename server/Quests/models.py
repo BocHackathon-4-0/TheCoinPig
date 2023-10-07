@@ -3,7 +3,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class QuestCategory(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=255)
 
     def __str__(self):
         return self.title
@@ -44,11 +44,11 @@ class Article(models.Model):
 
 
 class Quest(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=255)
     description = models.TextField()
     category = models.ForeignKey(QuestCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='quests', blank=True, null=True)
-    slug = models.SlugField(max_length=30, unique=True, blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     investments_unlocks = models.ManyToManyField('Investments.InvestmentProduct', blank=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, blank=True, null=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True, null=True)
