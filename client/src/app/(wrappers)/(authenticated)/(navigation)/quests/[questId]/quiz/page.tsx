@@ -95,30 +95,32 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
     };
 
     return (
-        <div className="h-full w-full bg-white  flex flex-col items-center">
-            <div className="overflow-y-auto p-4 w-full flex-grow max-w-7xl flex flex-col items-start">
-                <div className="py-8 mx-auto w-full">
-                    <h1 className="text-3xl font-extrabold text-gray-900 my-2">
-                        QUIZ: {questId}
-                    </h1>
-                    <h2 className="text-lg text-gray-700 mb-4 break-words">
-                        TEST
-                    </h2>
-                </div>
-                {quiz.questions.map((question) => (
-                    <div className="p-4">
-                        <QuizQuestion
-                            options={question.options}
-                            question={question.question}
-                            onChange={(responseId) =>
-                                handleQuizChange(
-                                    question.questionId,
-                                    responseId
-                                )
-                            }
-                        />
+        <div className="h-full w-full bg-white flex flex-col items-center">
+            <div className="overflow-y-auto p-4 w-full flex-grow flex flex-col items-center">
+                <div className="max-w-7xl flex flex-col items-start">
+                    <div className="py-8 mx-auto w-full">
+                        <h1 className="text-3xl font-extrabold text-gray-900 my-2">
+                            QUIZ: {questId}
+                        </h1>
+                        <h2 className="text-lg text-gray-700 mb-4 break-words">
+                            TEST
+                        </h2>
                     </div>
-                ))}
+                    {quiz.questions.map((question) => (
+                        <div className="p-4">
+                            <QuizQuestion
+                                options={question.options}
+                                question={question.question}
+                                onChange={(responseId) =>
+                                    handleQuizChange(
+                                        question.questionId,
+                                        responseId
+                                    )
+                                }
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
             <div className="bg-gray-100 w-full h-20 p-2 flex flex-row justify-end items-center">
                 <Button
