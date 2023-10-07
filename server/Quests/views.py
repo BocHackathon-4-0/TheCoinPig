@@ -49,7 +49,7 @@ class GetQuests(APIView):
 
             data = {
                 "completed_quests": quest_completed,
-                "quests_not_completed": quest_not_completed
+                "not_completed_quests": quest_not_completed
             }
                 
             status_code = status.HTTP_200_OK
