@@ -10,8 +10,8 @@ from rest_framework.response import Response
 class CheckUserCredentials(APIView):
     def get(self, request):
         
-        username = request.data.get("username")
-        password = request.data.get("password")
+        username = request.query_params.get("username")
+        password = request.query_params.get("password")
 
         user = User.objects.all()
 
