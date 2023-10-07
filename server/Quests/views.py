@@ -118,12 +118,12 @@ class GetQuestQuiz(APIView):
                 
                 answers = AnswerSerializer(question['wrong_answers'], many=True).data
                 correct_answer = AnswerSerializer(question['correct_answer']).data
-
+                totals_answers = answers + [correct_answer]
                 data = {
                     "question_id": question['id'],
                     "question": question['question'],
-                    "answers": answers,
-                    "correct_answer": correct_answer
+                    "answers": totals_answers,
+                    "correct_answer_id": correct_answer['id']
                 }
                 serialized_data.append(data)
             
@@ -174,4 +174,4 @@ class GetQuestRelatedArticle(APIView):
         except Exception as e:
             status_code = status.HTTP_400_BAD_REQUEST
             return Response({"error": str(e)}, status=status_code)
-
+        
