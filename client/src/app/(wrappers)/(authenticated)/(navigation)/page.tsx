@@ -215,13 +215,13 @@ export default function Home() {
                         <div className="p-4 max-w-7xl w-full mb-6">
                             <div className="w-full flex justify-center items-center pb-6">
                                 <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
-                                    My Portfolio
+                                    Recent Transactions
                                 </h1>
                             </div>
                             <div className="grid flex-col items-center justify-center w-auto h-auto grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-x-16 gap-y-8 text-black">
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
@@ -238,7 +238,7 @@ export default function Home() {
                                 </form>
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
@@ -255,7 +255,7 @@ export default function Home() {
                                 </form>
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
@@ -272,7 +272,7 @@ export default function Home() {
                                 </form>
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
@@ -289,7 +289,7 @@ export default function Home() {
                                 </form>
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
@@ -306,7 +306,7 @@ export default function Home() {
                                 </form>
                                 <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                        Payment from Dimitris Kosta
+                                        Payment to Dimitris Kosta
                                     </h2>
                                     <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                         Transfer description
