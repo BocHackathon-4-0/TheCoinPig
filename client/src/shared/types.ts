@@ -65,3 +65,12 @@ export type TQuestCategory = {
     id: number;
     title: string;
 };
+
+export type TInvestment = {
+    id: number;
+    startAmount: number;
+    reward: number;
+    startDate: string;
+    endDate: string;
+    productId: string;
+};
