@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from .models import *
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .serializers import InvestmentProductSerializer, InvestmentSerializer
+from .serializers import InvestmentProductSerializer, InvestmentSerializer, NoticeInvestmentSerializer, NoticeProductSerializer
 from MyUsers.models import ChildUser
 from .models import *
 
@@ -25,7 +25,12 @@ class getInvestments(APIView):
         all_investment_products = InvestmentProduct.objects.all()
         investmentsList = []
         for product in all_investment_products:
-            data = InvestmentProductSerializer(product).data
+            if NoticeProduct.objects.filter(product=product).exists():
+                data = NoticeProductSerializer(product).data
+                data['is_notice'] = True
+            else:
+                data = InvestmentProductSerializer(product).data
+            
             if user_investments.filter(product=product, end_date__gt=datetime.now()).exists():
                 data['currentInvestment'] = InvestmentSerializer(user_investments.get(product=product)).data
             investmentsList.append(data)
@@ -38,37 +43,21 @@ class createInvestment(APIView):
         uid = request.data.get("uid")
         product_id = request.data.get("product_id")
         amount = request.data.get("amount")
-
+        is_notice = False
         user = get_object_or_404(ChildUser, id=uid)
         product = get_object_or_404(InvestmentProduct, id=product_id)
-
+        if NoticeProduct.objects.filter(product=product).exists():
+            is_notice = True
         if user.balance < float(amount):
             return Response({"message": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST)
 
         user.balance -= float(amount)
         user.save()
 
-        investment = Investment.objects.create(user=user, product=product, start_amount=amount)
-        investment.save()
-
-        return Response({"message": "Investment created successfully"}, status=status.HTTP_200_OK)
-
-class createNoticeInvestment(APIView):
-    def post(self, request):
-        uid = request.data.get("uid")
-        product_id = request.data.get("product_id")
-        amount = request.data.get("amount")
-
-        user = get_object_or_404(ChildUser, id=uid)
-        product = get_object_or_404(NoticeProduct, id=product_id)
-
-        if user.balance < float(amount):
-            return Response({"message": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST)
-
-        user.balance -= float(amount)
-        user.save()
-
-        investment = NoticeInvestment.objects.create(user=user, product=product, start_amount=amount)
+        if is_notice:
+            investment = NoticeInvestment.objects.create(user=user, product=product, start_amount=amount)
+        else:
+            investment = Investment.objects.create(user=user, product=product, start_amount=amount)
         investment.save()
 
         return Response({"message": "Investment created successfully"}, status=status.HTTP_200_OK)
@@ -90,6 +79,8 @@ class withdrawInvestment(APIView):
         amount = request.data.get("amount")
 
         investment = get_object_or_404(Investment, id=investment_id)
+        if NoticeInvestment.objects.filter(id=investment_id).exists():
+            investment = get_object_or_404(NoticeInvestment, id=investment_id)
         # investment = get_objects(NoticeInvestment, id=investment_id, investment)
 
         investment.withdraw(amount)

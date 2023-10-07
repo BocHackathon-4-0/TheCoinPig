@@ -47,11 +47,11 @@ class Investment(models.Model):
 
         outcome = random.choices(outcome_options, probabilities, k=1)[0]   
         if outcome == "Success":
-            self.reward = self.start_amount * self.product.profit_yield
+            self.reward = self.start_amount * self.product.profit_yield/100
         elif outcome == "Neutral":
-            self.reward = self.start_amount
+            self.reward = 0
         elif outcome == "Fail":
-            self.reward = -(self.start_amount * self.product.loss_yield)
+            self.reward = -(self.start_amount * self.product.loss_yield/100)
 
     def withdraw(self, amount):
         if float(amount) > self.start_amount:
