@@ -11,11 +11,12 @@ class User(AbstractUser):
     
 
 class ParentUser(User):
-    
+    is_parent = models.BooleanField(default=True)
     class Meta:
         verbose_name_plural = 'Parent Users'
 
 class ChildUser(User):
+    is_parent = models.BooleanField(default=False)
     parent = models.ForeignKey(ParentUser, on_delete=models.CASCADE, related_name='children')
     completed_quests = models.ManyToManyField('Quests.Quest', blank=True, related_name='completed_quests')
     
