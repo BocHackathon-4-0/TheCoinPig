@@ -58,21 +58,25 @@ class Investment(models.Model):
             raise ValidationError("Amount to withdraw is greater than available balance")
         self.start_amount -= float(amount)
         self.caluclateReward()
-
+        self.save()
         self.user.balance += float(amount)
+        self.user.save()
     
     def deposit(self, amount):
         if float(amount) > self.user.balance:
             raise ValidationError("Amount to deposit is greater than available balance")
         self.start_amount += float(amount)
         self.caluclateReward()
-
+        self.save()
         self.user.balance -= float(amount)
+        self.user.save()
 
     def reward_distribution(self):
-        self.user.balance += self.reward
+        self.user.balance += self.start_amount + self.reward
         if self.user.parent.balance >= self.reward:
             self.user.parent.balance -= self.reward
+            self.user.parent.save()
+        self.user.save()
             
 
     def save(self, *args, **kwargs):
@@ -95,18 +99,23 @@ class NoticeInvestment(Investment):
         super().withdraw(amount)
         try:
             self.user.balance -= self.product.penalty
+            self.user.save()
         except:
-            pass
+            print("Error on withdraw on notice penalty fee")
     
 
     def NoticeWithdraw(self, amount):
         if float(amount) > self.start_amount:
             raise ValidationError("Amount to withdraw is greater than available balance")
+        if self.notice_sent:
+            raise ValidationError("Notice already sent")
         
         self.start_amount -= float(amount)
         self.caluclateReward()
 
         self.pending_withdraw_balance += float(amount)
+        self.notice_given = True
+        self.save()
 
         asyncio.run(self.execute_after_delay(self, amount, (self.notice_settlement_date - datetime.now()).total_seconds()))
     
@@ -115,6 +124,9 @@ class NoticeInvestment(Investment):
         print("Executing NoticeWithdraw function.")
         self.pending_withdraw_balance -= float(amount)
         self.user.balance += float(amount)
+        self.notice_given = False
+        self.user.save()
+        self.save()
 
 
 

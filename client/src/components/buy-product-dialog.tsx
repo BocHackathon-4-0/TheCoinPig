@@ -7,8 +7,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Box, Grid, SvgIcon } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSnackbar } from "notistack";
+import { apiFetch } from "@/shared/utils";
+import { useCookies } from "@/hooks/useCookies";
 
 type TBuyProductDialog = {
     productId: string;
@@ -21,6 +23,7 @@ export default function BuyProductDialog({
 }: TBuyProductDialog) {
     const [open, setOpen] = React.useState(false);
     const { enqueueSnackbar } = useSnackbar();
+    const [cookies] = useCookies();
 
     const handleSave = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -33,7 +36,17 @@ export default function BuyProductDialog({
 
         if (amount !== null) {
             console.log({ amount: Number(amount) });
-            // POST REQUEST HERE
+            apiFetch("investments/createInvestment/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    uid: cookies.auth?.uid,
+                    product_id: productId,
+                    amount: Number(amount),
+                }),
+            });
             setOpen(false);
         } else {
             enqueueSnackbar("Invalid data!", { variant: "error" });
@@ -44,7 +57,7 @@ export default function BuyProductDialog({
         <div>
             <button
                 onClick={() => setOpen(true)}
-                className="mt-10 block w-full rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="mt-10 block w-full rounded-md bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
                 Invest
             </button>

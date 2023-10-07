@@ -44,6 +44,7 @@ def serialize_quests(quests):
             "quest_article": quest_article,
             "quest_quiz": quest_quiz,
             "quest_image": quest['image'],
+            "quest_order": quest['order'],
         }
         serialized_data.append(quest_data)
     return serialized_data
