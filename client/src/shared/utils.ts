@@ -7,7 +7,7 @@
 export const apiFetch = (
     input: RequestInfo | URL,
     init?: RequestInit | undefined
-) => fetch(`http://localhost:8000/api/${input}`, init);
+) => fetch(`http://localhost:8000/${input}`, init);
 
 export function getInitials(inputString: string): string {
     const words = inputString.split(" ");
