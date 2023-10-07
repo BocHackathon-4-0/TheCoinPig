@@ -69,6 +69,12 @@ class Investment(models.Model):
 
         self.user.balance -= float(amount)
 
+    def reward_distribution(self):
+        self.user.balance += self.reward
+        if self.user.parent.balance >= self.reward:
+            self.user.parent.balance -= self.reward
+            
+
     def save(self, *args, **kwargs):
         if not self.pk:
             self.end_date = self.start_date + self.product.frequency
