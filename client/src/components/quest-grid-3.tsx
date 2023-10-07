@@ -10,24 +10,24 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 const quests = [
     {
         id: "1",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Investing: A Beginner's Guide",
+        description: "Get the 411 on investing, from stocks and bonds to how not to lose your money when starting to invest.",
         icon: image1,
         status: LockOpenIcon,
         css: 'text-blue-500'
     },
     {
         id: "2",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Your First Investment Portfolio",
+        description: "Learn how to create your very own mix of successful investments and make your money work for you.",
         icon: image2,
         status: LockIcon,
         css: 'text-red-600'
     },
     {
         id: "3",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Stocks & Bonds: The Ultimate Game",
+        description: "Dive into the exciting world of stocks and bonds, and find out how to pick winners.",
         icon: image3,
         status: LockIcon,
         css: 'text-red-600'

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ArticleSampleImage1 from "../../public/article-sample-image-1.jpeg";
-import ArticleSampleImage2 from "../../public/article-sample-image-2.jpeg";
-import ArticleSampleImage3 from "../../public/article-sample-image-3.jpeg";
+import image1 from "../../public/crypto/380173849_6568253836593706_8332946624679721441_n.png";
+import image2 from "../../public/crypto/380331401_695846225791577_8260957516060948305_n.png";
+import image3 from "../../public/crypto/380386416_915206660026012_7663609007230592654_n.png";
 import Link from "next/link";
 import CheckIcon from '@mui/icons-material/Check';
 import LockIcon from '@mui/icons-material/Lock';
@@ -10,25 +10,25 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 const quests = [
     {
         id: "1",
-        title: "Title goes here",
-        description: "Article description goes here",
-        icon: ArticleSampleImage1,
+        title: "Crypto for Newbies",
+        description: "Step into the future of money by learning what cryptocurrencies like Bitcoin and Ethereum are all about.",
+        icon: image1,
         status: CheckIcon,
         css: 'text-green-500'
     },
     {
         id: "2",
-        title: "Title goes here",
-        description: "Article description goes here",
-        icon: ArticleSampleImage2,
+        title: "Blockchain Unlocked",
+        description: "Get the scoop on blockchain, the tech magic behind cryptocurrencies, and why it's more than just digital money.",
+        icon: image2,
         status: LockOpenIcon,
         css: 'text-blue-500'
     },
     {
         id: "3",
-        title: "Title goes here",
-        description: "Article description goes here",
-        icon: ArticleSampleImage3,
+        title: "Crypto Trading Tactics",
+        description: "Master the art of trading cryptocurrencies and learn strategies to maximize your profits effectively.",
+        icon: image3,
         status: LockIcon,
         css: 'text-red-600'
     },

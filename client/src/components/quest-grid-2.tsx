@@ -10,24 +10,24 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 const quests = [
     {
         id: "1",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "What's the Deal with Notice Accounts?",
+        description: "Find out what notice accounts are and why they could be a smart place for your savings.",
         icon: image1,
         status: CheckIcon,
         css: 'text-green-500'
     },
     {
         id: "2",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Choosing the Right Notice Period:",
+        description: "Learn how to pick the best notice period for your savings account, so you can get your money when you really need it.",
         icon: image2,
         status: CheckIcon,
         css: 'text-green-500'
     },
     {
         id: "3",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Notice Accounts: Risk vs Reward",
+        description: "Uncover the pros and cons of notice accounts and how they can fit into your money game plan.",
         icon: image3,
         status: LockOpenIcon,
         css: 'text-blue-500'

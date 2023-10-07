@@ -10,24 +10,24 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 const quests = [
     {
         id: "1",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Budgeting Basics for Teens",
+        description: "Learn how to manage your money like a pro, whether it's your allowance or your first paycheck.",
         icon: image1,
         status: CheckIcon,
         css: 'text-green-500'
     },
     {
         id: "2",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Zero to Hero Budgeting",
+        description: "Discover a cool way to budget from scratch and make the most out of every dollar you have available.",
         icon: image2,
         status: LockOpenIcon,
         css: 'text-blue-500'
     },
     {
         id: "3",
-        title: "Title goes here",
-        description: "Article description goes here",
+        title: "Tech-Savvy Budgeting",
+        description: "Get the lowdown on using various apps and tech tools to keep track of your money and savings goals.",
         icon: image3,
         status: LockIcon,
         css: 'text-red-600'
