@@ -12,7 +12,7 @@ from .models import (
 class QuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quest
-        fields = ['id', 'name', 'description', 'category', 'image', 'slug', 'article', 'quiz', 'reward', 'is_active']
+        fields = ['id', 'name', 'description', 'category', 'image', 'slug', 'article', 'quiz', 'reward', 'is_active', 'order']
     
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
