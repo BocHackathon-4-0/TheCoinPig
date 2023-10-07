@@ -82,7 +82,9 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
                 user_id: cookies.auth?.uid,
                 quest_id: questId,
             }),
-        });
+        })
+            .then((res) => res.json())
+            .then((res) => console.log(res));
         router.push("/quests");
     };
 
