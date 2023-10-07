@@ -37,7 +37,7 @@ class Investment(models.Model):
     user = models.ForeignKey('MyUsers.ChildUser', on_delete=models.CASCADE, related_name='investments')
     product = models.ForeignKey(InvestmentProduct, on_delete=models.CASCADE, related_name='investments')
     start_amount = models.FloatField(default=0)
-    reward = models.FloatField()
+    reward = models.FloatField(blank=True, null=True)
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(blank=True, null=True)
 
