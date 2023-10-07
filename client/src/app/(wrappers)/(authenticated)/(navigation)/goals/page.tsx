@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useEffect } from "react";
 import {
     Box,
     Card,
@@ -18,145 +18,151 @@ import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import { GoalsTable } from "@/components/goals-table";
 import AddGoalDialog from "@/components/add-goal-dialog";
+import { useCookies } from "@/hooks/useCookies";
 
-const data: TGoal[] = [
-    {
-        id: "1",
-        title: "Buy a new car",
-        description: "Save up for a new car purchase",
-        amount: 30000,
-        achieved: false,
-    },
-    {
-        id: "2",
-        title: "Travel to Europe",
-        amount: 5000,
-        achieved: false,
-    },
-    {
-        id: "3",
-        title: "Learn a new programming language",
-        description: "Master a new language like Python or JavaScript",
-        amount: 0,
-        achieved: true,
-    },
-    {
-        id: "4",
-        title: "Renovate the house",
-        description: "Plan and execute a home renovation project",
-        amount: 25000,
-        achieved: false,
-    },
-    {
-        id: "5",
-        title: "Read 50 books",
-        description: "Challenge to read 50 books in a year",
-        amount: 0,
-        achieved: false,
-    },
-    {
-        id: "6",
-        title: "Start a side business",
-        description: "Launch and grow a successful side business",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "7",
-        title: "Learn to play the piano",
-        description: "Take piano lessons and become proficient",
-        amount: 120,
-        achieved: false,
-    },
-    {
-        id: "8",
-        title: "Travel to Asia",
-        amount: 800,
-        achieved: false,
-    },
-    {
-        id: "9",
-        title: "Achieve a promotion at work",
-        description: "Work hard to get a promotion within the company",
-        amount: 0,
-        achieved: false,
-    },
-    {
-        id: "10",
-        title: "Complete a marathon",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "11",
-        title: "Volunteer for a charity",
-        description: "Dedicate time to volunteer for a charitable organization",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "12",
-        title: "Learn to cook gourmet meals",
-        description: "Take cooking classes and become a gourmet chef",
-        amount: 0,
-        achieved: false,
-    },
-    {
-        id: "13",
-        title: "Buy a new house",
-        description: "Save up for a down payment on a new home",
-        amount: 50000,
-        achieved: false,
-    },
-    {
-        id: "14",
-        title: "Master a new sport",
-        description: "Become proficient in a new sport like golf or tennis",
-        amount: 0,
-        achieved: false,
-    },
-    {
-        id: "15",
-        title: "Learn a new language",
-        description: "Speak fluently in a new language",
-        amount: 111,
-        achieved: false,
-    },
-    {
-        id: "16",
-        title: "Travel to Africa",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "17",
-        title: "Complete a coding bootcamp",
-        description: "Enroll in and complete a coding bootcamp program",
-        amount: 0,
-        achieved: false,
-    },
-    {
-        id: "18",
-        title: "Start a YouTube channel",
-        description: "Create and upload regular content to a YouTube channel",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "19",
-        title: "Become a published author",
-        description: "Write and publish a book",
-        amount: 100,
-        achieved: false,
-    },
-    {
-        id: "20",
-        title: "Learn to paint",
-        description: "Take art classes and become a skilled painter",
-        amount: 1000,
-        achieved: false,
-    },
-];
+// const data: TGoal[] = [
+//     {
+//         id: "1",
+//         title: "Buy a new car",
+//         description: "Save up for a new car purchase",
+//         targetBalance: 30000,
+//         currentBalance: 30000,
+//         achieved: false,
+//     },
+//     {
+//         id: "2",
+//         title: "Travel to Europe",
+//         targetBalance: 30000,
+//         currentBalance: 30000,
+//         achieved: false,
+//     },
+//     {
+//         id: "3",
+//         title: "Learn a new programming language",
+//         description: "Master a new language like Python or JavaScript",
+//         targetBalance: 30000,
+//         currentBalance: 30000,
+//         achieved: true,
+//     },
+//     {
+//         id: "4",
+//         title: "Renovate the house",
+//         description: "Plan and execute a home renovation project",
+//         targetBalance: 30000,
+//         currentBalance: 30000,
+//         achieved: false,
+//     },
+//     {
+//         id: "5",
+//         title: "Read 50 books",
+//         description: "Challenge to read 50 books in a year",
+//         targetBalance: 30000,
+//         currentBalance: 30000,
+//         achieved: false,
+//     },
+//     {
+//         id: "6",
+//         title: "Start a side business",
+//         description: "Launch and grow a successful side business",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "7",
+//         title: "Learn to play the piano",
+//         description: "Take piano lessons and become proficient",
+//         amount: 120,
+//         achieved: false,
+//     },
+//     {
+//         id: "8",
+//         title: "Travel to Asia",
+//         amount: 800,
+//         achieved: false,
+//     },
+//     {
+//         id: "9",
+//         title: "Achieve a promotion at work",
+//         description: "Work hard to get a promotion within the company",
+//         amount: 0,
+//         achieved: false,
+//     },
+//     {
+//         id: "10",
+//         title: "Complete a marathon",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "11",
+//         title: "Volunteer for a charity",
+//         description: "Dedicate time to volunteer for a charitable organization",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "12",
+//         title: "Learn to cook gourmet meals",
+//         description: "Take cooking classes and become a gourmet chef",
+//         amount: 0,
+//         achieved: false,
+//     },
+//     {
+//         id: "13",
+//         title: "Buy a new house",
+//         description: "Save up for a down payment on a new home",
+//         amount: 50000,
+//         achieved: false,
+//     },
+//     {
+//         id: "14",
+//         title: "Master a new sport",
+//         description: "Become proficient in a new sport like golf or tennis",
+//         amount: 0,
+//         achieved: false,
+//     },
+//     {
+//         id: "15",
+//         title: "Learn a new language",
+//         description: "Speak fluently in a new language",
+//         amount: 111,
+//         achieved: false,
+//     },
+//     {
+//         id: "16",
+//         title: "Travel to Africa",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "17",
+//         title: "Complete a coding bootcamp",
+//         description: "Enroll in and complete a coding bootcamp program",
+//         amount: 0,
+//         achieved: false,
+//     },
+//     {
+//         id: "18",
+//         title: "Start a YouTube channel",
+//         description: "Create and upload regular content to a YouTube channel",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "19",
+//         title: "Become a published author",
+//         description: "Write and publish a book",
+//         amount: 100,
+//         achieved: false,
+//     },
+//     {
+//         id: "20",
+//         title: "Learn to paint",
+//         description: "Take art classes and become a skilled painter",
+//         amount: 1000,
+//         achieved: false,
+//     },
+// ];
 
 const useGoals = (data: TGoal[], page: number, rowsPerPage: number) => {
     return useMemo(() => {
@@ -171,12 +177,32 @@ const useGoalIds = (goals: TGoal[]) => {
 };
 
 const Page = () => {
+    const [data, setData] = useState<TGoal[]>();
+    const [cookies] = useCookies();
     const [search, setSearch] = useState<string>("");
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
+    const fetch = async () => {
+        await apiFetch(`goals/getAll/?uid=${3}`)
+            .then((res) => res.json())
+            .then((res) =>
+                setData(
+                    res.map((goal: any) => ({
+                        ...goal,
+                        targetBalance: goal.target_balance,
+                        currentBalance: goal.current_balance,
+                    }))
+                )
+            );
+    };
+
+    useEffect(() => {
+        (async () => fetch())();
+    }, []);
+
     const filteredData = useMemo(() => {
-        return data.filter((rec) =>
+        return (data ?? []).filter((rec) =>
             JSON.stringify(rec).toLowerCase().includes(search.toLowerCase())
         );
     }, [search, data]);
@@ -193,16 +219,25 @@ const Page = () => {
         setRowsPerPage(event.target.value);
     }, []);
 
-    const handleAddGoal = (newGoal: Omit<TGoal, "id" | "achieved">) => {
-        apiFetch("goals/getAll/", {
+    const handleAddGoal = async (
+        newGoal: Partial<Omit<TGoal, "id" | "achieved"> & { amount: number }>
+    ) => {
+        if (cookies.auth === undefined) return;
+        apiFetch("goals/create/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ ...newGoal }),
+            body: JSON.stringify({
+                uid: 3,
+                title: newGoal.title,
+                description: newGoal.description,
+                target_balance: newGoal.amount,
+            }),
         })
             .then((res) => res.json())
             .then((res) => console.log(res));
+        await fetch();
     };
 
     return (
@@ -246,7 +281,7 @@ const Page = () => {
                         </Stack>
                     </Stack>
                     <GoalsTable
-                        count={data.length}
+                        count={(data ?? []).length}
                         data={goals}
                         onDeselectAll={selection.handleDeselectAll}
                         onDeselectOne={selection.handleDeselectOne}

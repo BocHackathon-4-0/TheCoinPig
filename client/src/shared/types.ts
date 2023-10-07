@@ -1,4 +1,5 @@
 export type TAccount = {
+    uid: string;
     username: string;
     password: string;
     permissions: "parent" | "child";
@@ -17,7 +18,8 @@ export type TGoal = {
     id: string;
     title: string;
     description?: string;
-    amount: number;
+    targetBalance: number;
+    currentBalance: number;
     achieved: boolean;
 };
 
