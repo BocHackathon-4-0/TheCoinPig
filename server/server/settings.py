@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'Quests',
     'Goals',
+    'Investments',
 ]
 
 MIDDLEWARE = [

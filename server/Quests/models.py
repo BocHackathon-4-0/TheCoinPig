@@ -49,10 +49,11 @@ class Quest(models.Model):
     category = models.ForeignKey(QuestCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='quests', blank=True, null=True)
     slug = models.SlugField(max_length=30, unique=True, blank=True, null=True)
-    # investments_unlocks = models.ManyToManyField('Investments.Investment', blank=True)
+    investments_unlocks = models.ManyToManyField('Investments.InvestmentProduct', blank=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, blank=True, null=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True, null=True)
     reward = models.FloatField(default=0)
+    order = models.IntegerField(blank=True, null=True, help_text="Leave Blank for auto increment in same category")
 
     is_active = models.BooleanField(default=True)
 
@@ -66,6 +67,8 @@ class Quest(models.Model):
                     temp_slug = self.slug + f"-{counter}"
                     counter += 1
                 self.slug = temp_slug
+        if not self.order:
+            self.order = Quest.objects.filter(category=self.category).count() + 1
         super().save(*args, **kwargs)
 
     def __str__(self):
