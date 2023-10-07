@@ -198,8 +198,122 @@ export default function Home() {
                         </form>
                     </div>
                 </div>
-                
-                <div className='my-20 w-full bg-slate-200 z-10'>
+                <div className="flex items-center w-full justify-center pt-12 b-8 z-10">
+                    <div className="w-full bg-slate-200 flex items-center justify-center">
+                        <div className="p-4 max-w-7xl w-full mb-6">
+                            <div className="w-full flex justify-center items-center pb-6">
+                                <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
+                                    My Portfolio
+                                </h1>
+                            </div>
+                            <div className="grid flex-col items-center justify-center w-auto h-auto grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-x-16 gap-y-8 text-black">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                    <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
+                                        Payment from Dimitris Kosta
+                                    </h2>
+                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                        Transfer description
+                                    </p>
+                                    <div className="flex">
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            €15
+                                        </p>
+                                        <div className="grow" />
+                                        <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                            28/04/2020
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='my-20 w-full bg-white z-10'>
                     <div className="px-4 mx-auto max-w-7xl lg:px-8 py-8">
                     <div className="w-full flex justify-center items-center">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
