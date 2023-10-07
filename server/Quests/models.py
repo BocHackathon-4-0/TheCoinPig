@@ -5,10 +5,12 @@ from django.utils.text import slugify
 class QuestCategory(models.Model):
     title = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name_plural = 'Quest Categories'
+    
     def __str__(self):
         return self.title
-
-
+    
     
 class Quiz(models.Model):
     name = models.CharField(max_length=64)
@@ -17,7 +19,6 @@ class Quiz(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Answer(models.Model):
@@ -54,8 +55,10 @@ class Quest(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True, null=True)
     reward = models.FloatField(default=0)
     order = models.IntegerField(blank=True, null=True, help_text="Leave Blank for auto increment in same category")
-
     is_active = models.BooleanField(default=True)
+    
+    class Meta: 
+        verbose_name_plural = 'Quests'
 
     def save(self, *args, **kwargs):
         if not self.pk:

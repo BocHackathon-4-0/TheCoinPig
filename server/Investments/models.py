@@ -4,7 +4,7 @@ import random
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime, timedelta
-# Create your models here.
+
 class InvestmentProduct(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()
@@ -22,8 +22,9 @@ class InvestmentProduct(models.Model):
             raise ValidationError("The sum of success_rate, neutral_rate, and failure_rate must be 100.")
 
     def save(self, *args, **kwargs):
-        self.full_clean()  # Validate before saving
+        self.full_clean()
         super().save(*args, **kwargs)
+    
     def __str__(self):
         return self.name
 
@@ -32,7 +33,6 @@ class NoticeProduct(InvestmentProduct):
     notice_duration = models.DurationField(help_text="The duration you need to wait after giving a notice")
 
 
-    
 class Investment(models.Model):
     user = models.ForeignKey('MyUsers.ChildUser', on_delete=models.CASCADE, related_name='investments')
     product = models.ForeignKey(InvestmentProduct, on_delete=models.CASCADE, related_name='investments')

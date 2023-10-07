@@ -175,4 +175,24 @@ class GetQuestRelatedArticle(APIView):
         except Exception as e:
             status_code = status.HTTP_400_BAD_REQUEST
             return Response({"error": str(e)}, status=status_code)
-        
+
+class SetQuestCompleted(APIView):
+    def post(self, request):
+        try:
+            user_id = request.data.get("user_id")
+            quest_id = request.data.get("quest_id")
+            child = ChildUser.objects.get(id=user_id)
+            quest = Quest.objects.get(id=quest_id)
+            child.completed_quests.add(quest)
+            child.save()
+            status_code = status.HTTP_200_OK
+            return Response({"success": "Quest completed was set"}, status=status_code)
+        except ChildUser.DoesNotExist:
+            status_code = status.HTTP_404_NOT_FOUND
+            return Response({"error": "User not found"}, status=status_code)
+        except Quest.DoesNotExist:
+            status_code = status.HTTP_404_NOT_FOUND
+            return Response({"error": "Quest not found"}, status=status_code)
+        except Exception as e:
+            status_code = status.HTTP_400_BAD_REQUEST
+            return Response({"error": str(e)}, status=status_code)

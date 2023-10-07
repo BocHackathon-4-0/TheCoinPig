@@ -7,7 +7,7 @@ from Quests.views import (
     GetArticles,
     GetQuestQuiz,
     GetQuestRelatedArticle,
-    
+    SetQuestCompleted
 )
 
 urlpatterns = [
@@ -17,6 +17,5 @@ urlpatterns = [
     path('get_quest_quiz/', GetQuestQuiz.as_view()),
     path('get_quests_by_category/', GetQuestsByCategory.as_view()),
     path('get_quest_article/', GetQuestRelatedArticle.as_view()),
-
-
+    path('set_completed_quest/', SetQuestCompleted.as_view()),
 ]
