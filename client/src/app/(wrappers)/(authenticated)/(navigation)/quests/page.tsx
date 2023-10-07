@@ -1,4 +1,7 @@
 import QuestGrid from "@/components/quest-grid";
+import QuestGrid2 from "@/components/quest-grid-2";
+import QuestGrid3 from "@/components/quest-grid-3";
+import QuestGrid4 from "@/components/quest-grid-4";
 
 export default function Page() {
     return (
@@ -9,33 +12,74 @@ export default function Page() {
                 </p>
             </div>
             <div className="relative flex justify-center items-center">
-                <div className="flex justify-end items-center w-[200px]">
-                    <p className="text-black font-semibold text-lg">
+                <div className="justify-end items-center w-[200px]">
+                    <p className="text-black font-semibold text-4xl">
                         Budgeting
                     </p>
+                    <div className="w-full h-auto mt-2">
+                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
+                            +10 Antamivi points
+                        </p>
+                    </div>
                 </div>
                 <div className="w-[70%] overflow-y-auto">
                     <QuestGrid />
                 </div>
             </div>
             <div className="relative flex justify-center items-center">
-                <div className="flex justify-end items-center w-[200px]">
-                    <p className="text-black font-semibold text-lg">
-                        Investments
-                    </p>
+                <div className="justify-end items-center w-[200px]">
+                    <div className="w-full flex justify-end">
+                        <p className="text-black font-semibold text-4xl">
+                            Notice
+                        </p>
+                    </div>
+                    <div className="w-full flex justify-end">
+                        <p className="text-black font-semibold text-4xl">
+                            Accounts
+                        </p>
+                    </div>
+                    <div className="w-full h-auto mt-2">
+                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
+                            +15 Antamivi points
+                        </p>
+                    </div>
                 </div>
                 <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid />
+                    <QuestGrid2 />
                 </div>
             </div>
             <div className="relative flex justify-center items-center">
-                <div className="flex justify-end items-center w-[200px]">
-                    <p className="text-black font-semibold text-lg">
-                        Stocks and Crypto
-                    </p>
+                <div className="justify-end items-center w-[200px]">
+                    <div className="w-full flex justify-end">
+                        <p className="text-black font-semibold text-4xl">
+                            Investments
+                        </p>
+                    </div>
+                    <div className="w-full h-auto mt-2">
+                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
+                            +5 Antamivi points
+                        </p>
+                    </div>
                 </div>
                 <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid />
+                    <QuestGrid3 />
+                </div>
+            </div>
+            <div className="relative flex justify-center items-center">
+                <div className="justify-end items-center w-[200px]">
+                    <div className="w-full flex justify-end">
+                        <p className="text-black font-semibold text-4xl">
+                            Crypto
+                        </p>
+                    </div>
+                    <div className="w-full h-auto mt-2">
+                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
+                            +10 Antamivi points
+                        </p>
+                    </div>
+                </div>
+                <div className="w-[70%] overflow-y-auto">
+                    <QuestGrid4 />
                 </div>
             </div>
         </div>

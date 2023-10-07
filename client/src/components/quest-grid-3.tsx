@@ -1,7 +1,7 @@
 import Image from "next/image";
-import image1 from "../../public/budgeting/380083674_3587836871536553_4322588588215582888_n.png";
-import image2 from "../../public/budgeting/380128153_2112990239044386_4955342612160854094_n.png";
-import image3 from "../../public/budgeting/380398519_6643289889085061_935674131080540467_n.png";
+import image1 from "../../public/investments/379999779_289511120687557_6468799256504773914_n.png";
+import image2 from "../../public/investments/380061771_1323729224997164_4455912262560547259_n.png";
+import image3 from "../../public/investments/380111370_1047479959894983_6678965106923639376_n.png";
 import Link from "next/link";
 import CheckIcon from '@mui/icons-material/Check';
 import LockIcon from '@mui/icons-material/Lock';
@@ -13,16 +13,16 @@ const quests = [
         title: "Title goes here",
         description: "Article description goes here",
         icon: image1,
-        status: CheckIcon,
-        css: 'text-green-500'
+        status: LockOpenIcon,
+        css: 'text-blue-500'
     },
     {
         id: "2",
         title: "Title goes here",
         description: "Article description goes here",
         icon: image2,
-        status: LockOpenIcon,
-        css: 'text-blue-500'
+        status: LockIcon,
+        css: 'text-red-600'
     },
     {
         id: "3",
@@ -34,7 +34,7 @@ const quests = [
     },
 ];
 
-export default function QuestGrid() {
+export default function QuestGrid3() {
     return (
         <div className="max-w-2xl px-4mx-auto sm:px-6 lg:max-w-7xl lg:px-8 ">
             <div className="px-6 mx-auto w-7xl lg:px-0">
