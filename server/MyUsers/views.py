@@ -31,9 +31,7 @@ class CheckUserCredentials(APIView):
             status_code = status.HTTP_200_OK
             return Response(data, status=status_code)
         else: 
-            data = {
-                "message": "User does not exist"
-            }
+            
             status_code = status.HTTP_404_NOT_FOUND
-            return Response(data, status=status_code)
+            return Response({"error": "User not found"}, status=status_code)
         

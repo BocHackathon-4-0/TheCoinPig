@@ -5,6 +5,5 @@ from MyUsers.views import (
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('validate_user/', CheckUserCredentials.as_view()),
 ]
