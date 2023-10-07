@@ -27,6 +27,7 @@ export type TQuestionOption = {
 };
 
 export type TQuestion = {
+    questionId: string;
     question: string;
     options: TQuestionOption[];
     answerId: string;
