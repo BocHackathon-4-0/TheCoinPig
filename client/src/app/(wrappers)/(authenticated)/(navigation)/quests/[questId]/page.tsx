@@ -21,7 +21,7 @@ export default function QuestPage({ params: { questId } }: TQuestPageParams) {
 
     const [interestRate, setInterestRate] = useState(5);
     const [quizResult, setQuizResult] = useState('Try Again.');
-    const [benefitsVisible, setBenefitsVisible] = useState(true);
+    const [benefitsVisible, setBenefitsVisible] = useState(false);
     const [penaltyAmount, setPenaltyAmount] = useState(0);
 
     const updateInterestRate = (event: React.ChangeEvent<HTMLInputElement>) => {
