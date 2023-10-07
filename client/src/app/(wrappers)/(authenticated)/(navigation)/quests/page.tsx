@@ -1,9 +1,47 @@
+"use client";
+
 import QuestGrid from "@/components/quest-grid";
-import QuestGrid2 from "@/components/quest-grid-2";
-import QuestGrid3 from "@/components/quest-grid-3";
-import QuestGrid4 from "@/components/quest-grid-4";
+import { useCookies } from "@/hooks/useCookies";
+import { TQuest, TQuestCategory } from "@/shared/types";
+import { apiFetch } from "@/shared/utils";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+    const [quests, setQuests] = useState<TQuest[]>([]);
+    const [categories, setCategories] = useState<TQuestCategory[]>([]);
+    const [cookies] = useCookies();
+
+    useEffect(() => {
+        apiFetch(`quests/get_quests/?user_id=${cookies.auth?.uid}`)
+            .then((res) => res.json())
+            .then((res) =>
+                setQuests(
+                    [
+                        ...res.completed_quests.map((rec: any) => ({
+                            ...rec,
+                            state: "completed",
+                        })),
+                        ...res.not_completed_quests,
+                    ].map(
+                        (quest: any) =>
+                            ({
+                                id: quest.quest_id,
+                                name: quest.quest_name,
+                                description: quest.quest_description,
+                                categoryId: quest.quest_category,
+                                order: quest.quest_order,
+                                state: quest.state,
+                            } as TQuest)
+                    )
+                )
+            );
+        apiFetch("quests/get_quests_categories/")
+            .then((res) => res.json())
+            .then((res) => setCategories(res.categories));
+    }, []);
+
+    useEffect(() => console.log({ quests, categories }));
+
     return (
         <div className="relative w-full h-full overflow-y-auto pb-16">
             <div className="max-w-2xl mx-auto text-center">
@@ -11,77 +49,30 @@ export default function Page() {
                     Quests
                 </p>
             </div>
-            <div className="relative flex justify-center items-center">
-                <div className="justify-end items-center w-[200px]">
-                    <p className="text-black font-semibold text-4xl">
-                        Budgeting
-                    </p>
-                    <div className="w-full h-auto mt-2">
-                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
-                            +10 Antamivi points
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid />
-                </div>
-            </div>
-            <div className="relative flex justify-center items-center">
-                <div className="justify-end items-center w-[200px]">
-                    <div className="w-full flex justify-end">
+            {categories.map((category) => (
+                <div
+                    className="relative flex justify-center items-center"
+                    key={category.id}
+                >
+                    <div className="justify-end items-center w-[200px]">
                         <p className="text-black font-semibold text-4xl">
-                            Notice
+                            {category.title}
                         </p>
+                        <div className="w-full h-auto mt-2">
+                            <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
+                                +10 Antamivi points
+                            </p>
+                        </div>
                     </div>
-                    <div className="w-full flex justify-end">
-                        <p className="text-black font-semibold text-4xl">
-                            Accounts
-                        </p>
-                    </div>
-                    <div className="w-full h-auto mt-2">
-                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
-                            +15 Antamivi points
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid2 />
-                </div>
-            </div>
-            <div className="relative flex justify-center items-center">
-                <div className="justify-end items-center w-[200px]">
-                    <div className="w-full flex justify-end">
-                        <p className="text-black font-semibold text-4xl">
-                            Investments
-                        </p>
-                    </div>
-                    <div className="w-full h-auto mt-2">
-                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
-                            +5 Antamivi points
-                        </p>
+                    <div className="w-[70%] overflow-y-auto">
+                        <QuestGrid
+                            quests={quests.filter(
+                                (rec) => rec.categoryId === category.id
+                            )}
+                        />
                     </div>
                 </div>
-                <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid3 />
-                </div>
-            </div>
-            <div className="relative flex justify-center items-center">
-                <div className="justify-end items-center w-[200px]">
-                    <div className="w-full flex justify-end">
-                        <p className="text-black font-semibold text-4xl">
-                            Crypto
-                        </p>
-                    </div>
-                    <div className="w-full h-auto mt-2">
-                        <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
-                            +10 Antamivi points
-                        </p>
-                    </div>
-                </div>
-                <div className="w-[70%] overflow-y-auto">
-                    <QuestGrid4 />
-                </div>
-            </div>
+            ))}
         </div>
     );
 }
