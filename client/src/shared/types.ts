@@ -50,3 +50,17 @@ export type TInvestmentProduct = {
     lossYield: number;
     frequencyRate: string; // e.g. 3 days or 2 weeks
 };
+
+export type TQuest = {
+    id: number;
+    name: string;
+    description: string;
+    categoryId: number;
+    order: number;
+    state?: "unlocked" | "completed";
+};
+
+export type TQuestCategory = {
+    id: number;
+    title: string;
+};
