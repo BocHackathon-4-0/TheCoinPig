@@ -23,4 +23,5 @@ urlpatterns = [
     path('users/', include('MyUsers.urls')),
     path('quests/', include('Quests.urls')),
     path('goals/', include('Goals.urls')),
+    path('investments/', include('Investments.urls')),
 ]
