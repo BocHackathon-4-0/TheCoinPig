@@ -6,6 +6,7 @@ class Goals(models.Model):
     description = models.TextField()
     target_balance = models.FloatField(default=0)
     achieved = models.BooleanField(default=False)
+    # could have reward
     reward = models.FloatField(default=0)
     current_balance = models.FloatField(default=0)
 
@@ -15,6 +16,8 @@ class Goals(models.Model):
     def save(self, *args, **kwargs):
         if self.current_balance >= self.target_balance:
             self.achieved = True
+        else:
+            self.achieved = False
         super().save(*args, **kwargs)
 
 
