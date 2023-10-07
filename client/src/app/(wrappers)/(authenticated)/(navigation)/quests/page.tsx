@@ -55,9 +55,12 @@ export default function Page() {
                     key={category.id}
                 >
                     <div className="justify-end items-center w-[200px]">
-                        <p className="text-black font-semibold text-4xl">
-                            {category.title}
-                        </p>
+                        <div className="flex text-end justify-end">
+                            <p className="text-black font-semibold text-4xl">
+                                {category.title}
+                            </p>
+                        </div>
+                        
                         <div className="w-full h-auto mt-2">
                             <p className="text-white font-semibold text-lg bg-green-500 rounded-xl p-2">
                                 +10 Antamivi points
