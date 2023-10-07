@@ -73,12 +73,12 @@ export default function Page() {
                     <button onClick={handleOpen} className="block w-full rounded-md bg-gradient-to-tr from-green-800 to-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Give notice
                     </button>
-                    <button className="block w-full rounded-md bg-gradient-to-tr from-green-800 to-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    <a href='notice-account-deposit' className="block w-full rounded-md bg-gradient-to-tr from-green-800 to-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Make deposit
-                    </button>
-                    <button className="block w-full rounded-md bg-gradient-to-tr from-red-800 to-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    </a>
+                    <a href='notice-account-withdraw' className="block w-full rounded-md bg-gradient-to-tr from-red-800 to-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Withdraw without notice
-                    </button>
+                    </a>
                     <button className="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Withdraw with notice
                     </button>
