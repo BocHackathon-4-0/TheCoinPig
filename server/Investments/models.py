@@ -1,15 +1,16 @@
 from django.db import models
 import random
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class InvestmentProduct(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()
     image = models.ImageField(upload_to='investments', blank=True, null=True)
-    success_rate = models.IntegerField(default=0, max_value=100)
-    neutral_rate = models.IntegerField(default=0, max_value=100)
-    failure_rate = models.IntegerField(default=0, max_value=100)
+    success_rate = models.SmallIntegerField(default=0, validators=[MaxValueValidator(limit_value=100), MinValueValidator(limit_value=0)])
+    neutral_rate = models.SmallIntegerField(default=0, validators=[MaxValueValidator(limit_value=100), MinValueValidator(limit_value=0)])
+    failure_rate = models.SmallIntegerField(default=0, validators=[MaxValueValidator(limit_value=100), MinValueValidator(limit_value=0)])
     profit_yield = models.FloatField(default=0)
     loss_yield = models.FloatField(default=0)
     frequency = models.DurationField()
