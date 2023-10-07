@@ -124,7 +124,7 @@ export default function Page() {
                                                 <div className="">
                                                     <a
                                                         href=""
-                                                        className="inline-block rounded-full text-white bg-blue-700 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
+                                                        className="inline-block rounded-full text-white bg-green-500 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
                                                     >
                                                         {investment.name}
                                                     </a>
@@ -166,7 +166,7 @@ export default function Page() {
                                         Notice accounts require advance notice for withdrawals, balancing accessibility with potentially higher interest rates.
                                     </p>
                                     <div className="mt-6 flex items-center gap-x-4">
-                                        <h4 className="flex-none text-lg font-semibold leading-6 text-blue-600">
+                                        <h4 className="flex-none text-lg font-semibold leading-6 text-green-500">
                                             Return frequency: 3 months
                                         </h4>
                                     </div>
@@ -176,7 +176,7 @@ export default function Page() {
                                     >
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -187,7 +187,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -198,7 +198,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -209,7 +209,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -221,7 +221,7 @@ export default function Page() {
                                     </ul>
                                 </div>
                                 <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-                                    <div className="rounded-2xl bg-gradient-to-br from-white via-blue-100 to-white py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                                    <div className="rounded-2xl bg-gradient-to-br from-white via-pink-100 to-white py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                                         <div className="mx-auto max-w-xs px-8">
                                             <p className="text-base font-semibold text-gray-600">
                                                 Minimum investment
@@ -234,7 +234,7 @@ export default function Page() {
                                                     Euro
                                                 </span>
                                             </p>
-                                            <a href="notice-account-creation" className="mt-10 block w-full rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                                            <a href="notice-account-creation" className="mt-10 block w-full rounded-md bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                                                 Open account
                                             </a>
                                             <p className="mt-6 text-xs leading-5 text-gray-600">
@@ -254,7 +254,7 @@ export default function Page() {
                                         {product.description}
                                     </p>
                                     <div className="mt-6 flex items-center gap-x-4">
-                                        <h4 className="flex-none text-lg font-semibold leading-6 text-blue-600">
+                                        <h4 className="flex-none text-lg font-semibold leading-6 text-green-600">
                                             Return frequency:{" "}
                                             {product.frequencyRate}
                                         </h4>
@@ -265,7 +265,7 @@ export default function Page() {
                                     >
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -276,7 +276,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -287,7 +287,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -298,7 +298,7 @@ export default function Page() {
                                         </li>
                                         <li className="flex gap-x-3">
                                             <svg
-                                                className="h-6 w-5 flex-none text-blue-600"
+                                                className="h-6 w-5 flex-none text-green-600"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                                 aria-hidden="true"
@@ -310,7 +310,7 @@ export default function Page() {
                                     </ul>
                                 </div>
                                 <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-                                    <div className="rounded-2xl bg-gradient-to-br from-white via-blue-100 to-white py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                                    <div className="rounded-2xl bg-gradient-to-br from-white via-pink-100 to-white py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                                         <div className="mx-auto max-w-xs px-8">
                                             <p className="text-base font-semibold text-gray-600">
                                                 Currently invested
