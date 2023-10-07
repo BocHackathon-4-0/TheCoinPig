@@ -35,7 +35,7 @@ class CreateGoal(APIView):
             title = serializer.validated_data.get('title')
             description = serializer.validated_data.get('description')
             target_balance = serializer.validated_data.get('target_balance')
-            Goal = Goal(title=title, description=description, target_balance=target_balance, user=user)
+            Goal = Goals(title=title, description=description, target_balance=target_balance, user=user)
             Goal.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

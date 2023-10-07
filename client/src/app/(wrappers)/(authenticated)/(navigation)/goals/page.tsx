@@ -11,7 +11,7 @@ import {
     SvgIcon,
     Typography,
 } from "@mui/material";
-import { applyPagination } from "@/shared/utils";
+import { apiFetch, applyPagination } from "@/shared/utils";
 import { useSelection } from "@/hooks/useSelection";
 import { TGoal } from "@/shared/types";
 import AddIcon from "@mui/icons-material/Add";
@@ -193,6 +193,18 @@ const Page = () => {
         setRowsPerPage(event.target.value);
     }, []);
 
+    const handleAddGoal = (newGoal: Omit<TGoal, "id" | "achieved">) => {
+        apiFetch("goals/getAll/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...newGoal }),
+        })
+            .then((res) => res.json())
+            .then((res) => console.log(res));
+    };
+
     return (
         <Box
             component="main"
@@ -230,15 +242,7 @@ const Page = () => {
                                     sx={{ maxWidth: 500 }}
                                 />
                             </Card>
-                            <AddGoalDialog
-                                callback={(goal) => {
-                                    data.push({
-                                        ...goal,
-                                        id: "1",
-                                        achieved: false,
-                                    });
-                                }}
-                            />
+                            <AddGoalDialog callback={handleAddGoal} />
                         </Stack>
                     </Stack>
                     <GoalsTable
