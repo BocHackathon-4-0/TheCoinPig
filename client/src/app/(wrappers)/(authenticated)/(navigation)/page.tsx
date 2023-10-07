@@ -24,7 +24,7 @@ export default function Home() {
             }}
             className="w-full flex flex-col justify-center items-center overflow-y-auto h-full"
         >
-            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[800px]">
+            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[900px]">
                 <div className="flex flex-col justify-end items-end col-span-1 font-semibold tracking-[-4px]">
                     <h1 className="text-black text-8xl">
                         The
@@ -50,7 +50,8 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex items-center w-full justify-center pt-12 pb-8">
-                    <div className="p-4 max-w-7xl w-full border-y-2 border-black">
+                <div className="w-full bg-slate-200 flex items-center justify-center">
+                    <div className="p-4 max-w-7xl w-full">
                         <div className="w-full flex justify-center items-center pb-6">
                             <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
                                 My Portfolio
@@ -139,6 +140,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                    
+                </div>
 
                 <div className="mx-auto max-w-7xl">
                     <div className="w-full flex justify-center items-center pb-6">
@@ -176,13 +179,10 @@ export default function Home() {
                             </div>
                         </form>
                     </div>
-                    <div className="w-[1280px] h-[2px] pt-12">
-                        <div className="w-full h-[2px] bg-black" />
-                    </div>
                 </div>
                 
-                <div className='my-10'>
-                    <div className="px-4 mx-auto max-w-7xl lg:px-8">
+                <div className='my-20 w-full bg-slate-200'>
+                    <div className="px-4 mx-auto max-w-7xl lg:px-8 py-8">
                     <div className="w-full flex justify-center items-center">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
                             Why Choose Coing Pig
