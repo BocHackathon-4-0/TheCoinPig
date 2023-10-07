@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 type TQuizQuestionProps = {
     question: string;
     options: TQuestionOption[];
-    onChange: (selectedId: string) => void;
+    onChange: (selectedId: number) => void;
 };
 
 export default function QuizQuestion({
@@ -19,7 +19,7 @@ export default function QuizQuestion({
     options,
     onChange,
 }: TQuizQuestionProps) {
-    const [selectedId, setSelectedId] = useState<string>();
+    const [selectedId, setSelectedId] = useState<number>();
 
     useEffect(() => {
         if (selectedId === undefined) return;
@@ -29,10 +29,10 @@ export default function QuizQuestion({
     return (
         <FormControl
             onChange={(e) =>
-                setSelectedId((e.target as HTMLInputElement).value)
+                setSelectedId(Number((e.target as HTMLInputElement).value))
             }
         >
-            <FormLabel>{question}</FormLabel>
+            <FormLabel sx={{ fontSize: 25 }}>{question}</FormLabel>
             <RadioGroup name="radio-buttons-group">
                 {options.map((option) => (
                     <FormControlLabel
@@ -41,6 +41,7 @@ export default function QuizQuestion({
                         control={<Radio />}
                         label={option.text}
                         className="text-gray-700"
+                        sx={{ fontSize: 20 }}
                     />
                 ))}
             </RadioGroup>

@@ -1,68 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { TQuestion, TQuestionOption, TQuiz } from "@/shared/types";
 import QuizQuestion from "@/components/quiz-question";
 import { useSnackbar } from "notistack";
+import { apiFetch } from "@/shared/utils";
+import { useCookies } from "@/hooks/useCookies";
+import { useRouter } from "next/navigation";
 
 type TQuizPageParams = {
     params: { questId: string };
 };
 
 type TQuizProcess = {
-    [questionId: string]: string;
-};
-
-const questionOptions: TQuestionOption[] = [
-    { id: "1", text: "Stocks" },
-    { id: "2", text: "Bonds" },
-    { id: "3", text: "Real Estate" },
-    { id: "4", text: "Cryptocurrency" },
-];
-
-const quizQuestions: TQuestion[] = [
-    {
-        questionId: "1",
-        question: "What is a common investment vehicle?",
-        options: questionOptions,
-        answerId: "1",
-    },
-    {
-        questionId: "2",
-        question: "Which investment is known for its fixed interest rate?",
-        options: questionOptions,
-        answerId: "2",
-    },
-    {
-        questionId: "3",
-        question: "Which investment involves purchasing physical properties?",
-        options: questionOptions,
-        answerId: "3",
-    },
-    {
-        questionId: "4",
-        question: "What is a digital or virtual form of currency?",
-        options: questionOptions,
-        answerId: "4",
-    },
-    {
-        questionId: "5",
-        question: "Which investment is associated with ownership in a company?",
-        options: questionOptions,
-        answerId: "1",
-    },
-];
-
-const quiz: TQuiz = {
-    questions: quizQuestions,
+    [questionId: number]: number;
 };
 
 export default function QuizPage({ params: { questId } }: TQuizPageParams) {
+    const [quiz, setQuiz] = useState<TQuiz>();
     const [quizProcess, setQuizProcess] = useState<TQuizProcess>({});
     const { enqueueSnackbar } = useSnackbar();
+    const [cookies] = useCookies();
+    const router = useRouter();
 
-    const handleQuizChange = (questionId: string, responseId: string) => {
+    useEffect(() => {
+        apiFetch(`quests/get_quest_quiz/?quest_id=${questId}`)
+            .then((res) => res.json())
+            .then((res) =>
+                setQuiz({
+                    title: res.quiz.name,
+                    questions: res.questions.map((question: any) => ({
+                        questionId: question.question_id,
+                        question: question.question,
+                        options: question.answers.map((answer: any) => ({
+                            id: answer.id,
+                            text: answer.answer,
+                        })),
+                        answerId: question.correct_answer_id,
+                    })),
+                })
+            );
+    }, []);
+
+    const handleQuizChange = (questionId: number, responseId: number) => {
         setQuizProcess((curr) => {
             return {
                 ...curr,
@@ -71,11 +52,12 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        if (quiz === undefined) return;
         const hasPassed = Object.entries(quizProcess).every(
             ([questionId, responseId]) => {
                 const question = quiz.questions.find(
-                    (rec) => rec.questionId === questionId
+                    (rec) => rec.questionId === Number(questionId)
                 );
                 if (question === undefined) return false;
 
@@ -91,8 +73,20 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
         }
 
         enqueueSnackbar("You passed the quiz!", { variant: "success" });
-        // TODO: QUIZ RESULT SUBMISSIO LOGIC HERE
+        await apiFetch("quests/set_completed_quest/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user_id: cookies.auth?.uid,
+                quest_id: questId,
+            }),
+        });
+        router.push("/quests");
     };
+
+    if (quiz === undefined) return <></>;
 
     return (
         <div className="h-full w-full bg-white flex flex-col items-center">
@@ -100,11 +94,8 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
                 <div className="max-w-7xl flex flex-col items-start">
                     <div className="py-8 mx-auto w-full">
                         <h1 className="text-3xl font-extrabold text-gray-900 my-2">
-                            QUIZ: {questId}
+                            QUIZ: {quiz.title}
                         </h1>
-                        <h2 className="text-lg text-gray-700 mb-4 break-words">
-                            TEST
-                        </h2>
                     </div>
                     {quiz.questions.map((question) => (
                         <div className="p-4">

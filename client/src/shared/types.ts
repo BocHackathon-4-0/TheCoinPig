@@ -24,18 +24,19 @@ export type TGoal = {
 };
 
 export type TQuestionOption = {
-    id: string;
+    id: number;
     text: string;
 };
 
 export type TQuestion = {
-    questionId: string;
+    questionId: number;
     question: string;
     options: TQuestionOption[];
-    answerId: string;
+    answerId: number;
 };
 
 export type TQuiz = {
+    title: string;
     questions: TQuestion[];
 };
 
