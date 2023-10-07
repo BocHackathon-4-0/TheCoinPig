@@ -11,7 +11,9 @@ import AddIcon from "@mui/icons-material/Add";
 import { useSnackbar } from "notistack";
 
 type TAddGoalDialogProps = {
-    callback: (goal: Omit<TGoal, "id" | "achieved">) => Promise<void> | void;
+    callback: (
+        goal: Partial<Omit<TGoal, "id" | "achieved"> & { amount: number }>
+    ) => Promise<void> | void;
 };
 
 export default function AddGoalDialog({ callback }: TAddGoalDialogProps) {

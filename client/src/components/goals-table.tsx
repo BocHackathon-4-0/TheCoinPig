@@ -72,7 +72,8 @@ export const GoalsTable = (props: TGoalsTableProps) => {
                             </TableCell>
                             <TableCell>Title</TableCell>
                             <TableCell>Description</TableCell>
-                            <TableCell>Amount</TableCell>
+                            <TableCell>Current Balance</TableCell>
+                            <TableCell>Target Balance</TableCell>
                             <TableCell>Achieved</TableCell>
                         </TableRow>
                     </TableHead>
@@ -102,7 +103,8 @@ export const GoalsTable = (props: TGoalsTableProps) => {
                                     <TableCell>
                                         {goal.description ?? ""}
                                     </TableCell>
-                                    <TableCell>{goal.amount}</TableCell>
+                                    <TableCell>{goal.currentBalance}</TableCell>
+                                    <TableCell>{goal.targetBalance}</TableCell>
                                     <TableCell>
                                         {goal.achieved ? (
                                             <DoneIcon color="success" />
