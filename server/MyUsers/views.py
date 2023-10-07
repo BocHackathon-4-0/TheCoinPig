@@ -22,8 +22,6 @@ class CheckUserCredentials(APIView):
             user_id = curr_user.get().id
             balance = curr_user.get().balance
 
-            print(user_id)
-
             data = {
                 "message": "User exists",
                 "user_id": user_id,
