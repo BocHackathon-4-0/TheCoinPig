@@ -2,12 +2,14 @@
 
 import React from "react";
 import { Button, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 type TQuestPageParams = {
     params: { questId: string };
 };
 
 export default function QuestPage({ params: { questId } }: TQuestPageParams) {
+    const router = useRouter();
     const title: string = "TEST QUEST";
     const description: string = `
         HFUEOISALLF HUIOEASHFUIOESA HIFOUPAESHUIOF EAHSUIOFHUISAEHF
@@ -32,7 +34,7 @@ export default function QuestPage({ params: { questId } }: TQuestPageParams) {
             <div className="bg-gray-100 w-full h-20 p-2 flex flex-row justify-end items-center">
                 <Button
                     variant="contained"
-                    onClick={() => console.log("QUIZ")}
+                    onClick={() => router.push(questId + "/quiz")}
                     className="h-full"
                 >
                     <Typography variant="h4">Take Quiz</Typography>
