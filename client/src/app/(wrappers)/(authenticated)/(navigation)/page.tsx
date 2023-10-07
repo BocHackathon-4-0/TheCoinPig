@@ -7,11 +7,13 @@ import CreditCardOffIcon from '@mui/icons-material/CreditCardOff';
 import SchoolIcon from '@mui/icons-material/School';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import HeroIcon from '../../../../../public/abstract-image-hero-section.png';
+import Image from "next/image";
 
 const insuranceTypes = [
-    { id: 1, name: 'Fully comprehensive', price:'Average price: £560/year', description: 'Fully comprehensive is the highest level of cover and usually the cheapest. You’ll be protected against damage, repairs, medical expenses, fire, and theft, as well as third-party liability.' },
-    { id: 2, name: 'Third-party, fire and theft', price:'Average price: £753/year', description: 'Third-party, fire and theft policies offer cover for other people, their vehicles, and their property, as well as protection for your own car if it were to get stolen, or if it’s damaged by fire.' },
-    { id: 3, name: 'Third-party', price:'Average price: £620/year', description: 'Third-party cover is the minimum legal requirement you need, and it’s also usually more expensive than fully-comp cover. It covers injuries to other people, and damage to their vehicles and property.' },
+    { id: 1, name: 'Financial Independence', price:'Early Budgeting Skills', description: 'Learning how to budget at a young age sets you up for a lifetime of financial independence and smart money choices. You’ll be ahead of the game when it comes to managing expenses, saving, and even investing.' },
+    { id: 2, name: 'Future Planning', price:'Investment and Savings Knowledge', description: 'Understanding investments and savings accounts like notice accounts can help you grow your money over time. This knowledge is not just for adults; it’s a head start on planning for bigger life goals like college, travel, or even starting your own business.' },
+    { id: 3, name: 'Technological Literacy', price:'Understanding Cryptocurrency and Blockchain', description: 'As digital currencies and blockchain technology become more integrated into our daily lives, understanding these concepts will give you an edge in the modern world. Plus, it’s a cool way to impress your friends and family with your tech-savvy knowledge.' },
   ];
 
 export default function Home() {
@@ -25,7 +27,23 @@ export default function Home() {
             className="w-full flex flex-col justify-center items-center overflow-y-auto h-full"
         >
             <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[900px]">
-                <div className="flex flex-col justify-end items-end col-span-1 font-semibold tracking-[-4px]">
+            <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
+                <div 
+                    className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-300 via-purple-400 to-pink-600 opacity-70 rotate-0" 
+                    style={{ 
+                    clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
+                    }}
+                />
+            </div>
+            <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
+                <div 
+                    className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-300 via-purple-400 to-pink-600 opacity-70 rotate-180" 
+                    style={{ 
+                    clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
+                    }}
+                />
+            </div>
+                <div className="flex flex-col justify-end items-end col-span-1 font-semibold tracking-[-4px] z-10">
                     <h1 className="text-black text-8xl">
                         The
                     </h1>
@@ -36,20 +54,20 @@ export default function Home() {
                         Pig
                     </h1>
                 </div>
-                <div className="flex flex-col col-span-2 justify-center h-full mt-3">
+                <div className="flex flex-col col-span-2 justify-center h-full mt-3 z-10">
                     <h2 className="flex text-black text-3xl tracking-wide">
                         Where<p className="text-blue-600 px-2 font-semibold">Young</p>Savings Cultivate Financial<p className="text-purple-700 pl-2 font-semibold">Success!</p>
                     </h2>
                     <div className="flex items-center justify-start h-auto">
                         <ul className="text-black font-semibold text-4xl">
                             <p className="pt-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent"> <SchoolIcon className="mx-2 text-4xl font-normal text-gray-700"/> Learn About financial blipblops</p>
-                            <p className="py-6 bg-gradient-to-r from-yellow-800 to-yellow-500 bg-clip-text text-transparent"> <TrackChangesIcon className="mx-2 text-4xl font-normal text-yellow-800"/> Set and achieve your goals</p>
+                            <p className="py-6 bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent"> <TrackChangesIcon className="mx-2 text-4xl font-normal text-yellow-800"/> Set and achieve your goals</p>
                             <p className="bg-gradient-to-r from-pink-900 to-pink-500 bg-clip-text text-transparent"> <TrendingUpIcon className="mx-2 text-4xl font-normal text-pink-500"/> Invest in a virtual environment</p>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center w-full justify-center pt-12 pb-8">
+            <div className="flex items-center w-full justify-center pt-12 pb-8 z-10">
                 <div className="w-full bg-slate-200 flex items-center justify-center">
                     <div className="p-4 max-w-7xl w-full">
                         <div className="w-full flex justify-center items-center pb-6">
@@ -143,7 +161,7 @@ export default function Home() {
                     
                 </div>
 
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl z-10">
                     <div className="w-full flex justify-center items-center pb-6">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
                             Adventures
@@ -181,11 +199,11 @@ export default function Home() {
                     </div>
                 </div>
                 
-                <div className='my-20 w-full bg-slate-200'>
+                <div className='my-20 w-full bg-slate-200 z-10'>
                     <div className="px-4 mx-auto max-w-7xl lg:px-8 py-8">
                     <div className="w-full flex justify-center items-center">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
-                            Why Choose Coing Pig
+                            Why Should I Learn To Manage My Money
                         </h1>
                     </div>
                     {insuranceTypes.map((type) => (
