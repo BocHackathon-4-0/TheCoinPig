@@ -25,7 +25,8 @@ class CheckUserCredentials(APIView):
             data = {
                 "message": "User exists",
                 "user_id": user_id,
-                "balance": balance
+                "balance": balance,
+                "permission": type(curr_user)
             }
 
             status_code = status.HTTP_200_OK
