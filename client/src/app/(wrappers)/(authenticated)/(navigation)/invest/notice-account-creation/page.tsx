@@ -14,7 +14,7 @@ export default function Page() {
                         <div className="flex items-center">
                             <p className="ml-[28px] text-black pr-[16px]">  Type</p>
                             <label htmlFor="country" className="sr-only">Country</label>
-                            <select id="country" name="country" autoComplete='off' className=" w-[400px] block rounded-md border-0 px-3.5 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6 h-[40px]">
+                            <select id="country" name="country" autoComplete='off' className=" w-[400px] block rounded-md border-0 px-3.5 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 h-[40px]">
                                 <option>e-Notice 8 days | 0.2%/month</option>
                                 <option>e-Notice 35 days | 0.3%/month</option>
                                 <option>e-Notice 90 days | 0.5%/month</option>
@@ -26,13 +26,13 @@ export default function Page() {
                 <div className="flex items-center gap-x-4 sm:col-span-2">
                     <p className="text-black ">Balance</p>
                     <div className="mt-2.5 w-full">
-                        <input disabled placeholder='363.79 EUR' className="block w-full bg-gray-200 hover:cursor-not-allowed rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6 h-[40px]" />
+                        <input disabled placeholder='363.79 EUR' className="block w-full bg-gray-200 hover:cursor-not-allowed rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 h-[40px]" />
                     </div>
                 </div>
                 <div className="flex items-center gap-x-4 sm:col-span-2">
                 <p className="text-black">Amount</p>
                     <div className="mt-2.5 w-full">
-                        <input placeholder='0.00 EUR' className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6 h-[40px]" />
+                        <input placeholder='0.00 EUR' className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 h-[40px]" />
                     </div>
                 </div>
                 <div className="flex items-center gap-x-4 sm:col-span-2">
@@ -45,7 +45,7 @@ export default function Page() {
                 </div>
                 <div className="mt-2 sm:mt-4">
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <a href='notice-account-management' className="block w-full rounded-md bg-gradient-to-tr from-blue-800 to-blue-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</a>
+                <a href='notice-account-management' className="block w-full rounded-md bg-gradient-to-tr from-green-800 to-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Submit</a>
                 </div>
             </form>
             </div>
