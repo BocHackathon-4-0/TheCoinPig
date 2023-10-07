@@ -26,7 +26,7 @@ export default function Home() {
             }}
             className="w-full flex flex-col justify-center items-center overflow-y-auto h-full"
         >
-            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[900px]">
+            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[1300px]">
             <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
                 <div 
                     className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-300 via-purple-400 to-pink-600 opacity-70 rotate-0" 
@@ -56,7 +56,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col col-span-2 justify-center h-full mt-3 z-10">
                     <h2 className="flex text-black text-3xl tracking-wide">
-                        Where<p className="text-blue-600 px-2 font-semibold">Young</p>Savings Cultivate Financial<p className="text-purple-700 pl-2 font-semibold">Success!</p>
+                        Where<p className="text-yellow-500 px-2 font-bold">Young</p>Savings Cultivate Financial<p className="text-pink-600 pl-2 font-bold">Success!</p>
                     </h2>
                     <div className="flex items-center justify-start h-auto">
                         <ul className="text-black font-semibold text-4xl">
@@ -67,100 +67,114 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center w-full justify-center pt-12 pb-8 z-10">
-                <div className="w-full bg-slate-200 flex items-center justify-center">
+            <div className="flex items-center w-full justify-center z-10">
+                <div className="w-full bg-slate-200 flex items-center justify-center mt-12 mb-8">
                     <div className="p-4 max-w-7xl w-full">
                         <div className="w-full flex justify-center items-center pb-6">
                             <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
                                 My Portfolio
                             </h1>
                         </div>
-                        <div className="grid grid-cols-12 gap-4 pb-8">
-                        {/* Stock Card 1 */}
-                        <div className="col-span-12 sm:col-span-6 md:col-span-3 border-2 border-blue-700 rounded-xl">
-                            <div className="flex flex-row bg-white shadow-sm rounded-xl p-4">
-                                <div className="flex flex-col flex-grow ml-4">
-                                    <div className="text-sm text-gray-500">
-                                        <div className="col-span-12">
-                                            <a href="#" className="rounded-full text-white bg-blue-700 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
-                                                Current Balance
-                                            </a>
+                        <div className="grid grid-cols-10 gap-4 pb-8">
+                            {/* Stock Card 1 */}
+                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-pink-700 rounded-xl">
+                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                    <div className="flex flex-col flex-grow">
+                                        <div className="text-sm text-gray-500">
+                                            <div className="col-span-12">
+                                                <a href="#" className="rounded-full text-white bg-pink-700 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
+                                                    Current Balance
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-center pt-2">
+                                            <div className="font-bold text-xl text-black">€9,000.00</div>
+                                            <div className="grow" />
+                                            <CreditCardIcon className="text-black"/>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            {/* Stock Card 2 */}
+                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-pink-500 rounded-xl">
+                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                <div className="flex flex-col flex-grow">
+                                    <div className="text-sm text-gray-500">
+                                    <div className="col-span-12 lg:col-span-8">
+                                        <a href="#" className="rounded-full text-white bg-pink-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
+                                            Savings Account
+                                        </a>
+                                    </div>
+                                    </div>
                                     <div className="flex items-center justify-center pt-2">
-                                        <div className="font-bold text-xl text-black">€9,000.00</div>
+                                        <div className="font-bold text-xl text-black">€900.00</div>
                                         <div className="grow" />
-                                        <CreditCardIcon className="text-black"/>
+                                        <EuroIcon className="text-black"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            {/* Stock Card 3 */}
+                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-pink-400 rounded-xl">
+                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                <div className="flex flex-col flex-grow">
+                                    <div className="text-sm text-gray-500">
+                                    <div className="col-span-12 lg:col-span-8">
+                                        <a href="#" className="rounded-full text-white bg-pink-400 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
+                                            ETF Investments
+                                        </a>
+                                    </div>
+                                    </div>
+                                    <div className="flex items-center justify-center pt-2">
+                                        <div className="font-bold text-xl text-black">€3,000.00</div>
+                                        <div className="grow" />
+                                        <CurrencyExchangeIcon className="text-black"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            {/* Stock Card 4 */}
+                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-yellow-400 rounded-xl">
+                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                    <div className="flex flex-col flex-grow">
+                                        <div className="text-sm text-gray-500">
+                                            <div className="col-span-12 lg:col-span-8">
+                                                <a href="#" className="rounded-full text-white bg-yellow-400 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
+                                                    Notice Account
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-center pt-2">
+                                            <div className="font-bold text-xl text-black">€510.00</div>
+                                            <div className="grow" />
+                                            <CreditCardOffIcon className="text-black"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Stock Card 2 */}
-                        <div className="col-span-12 sm:col-span-6 md:col-span-3 border-2 border-green-600 rounded-xl">
-                            <div className="flex flex-row bg-white shadow-sm rounded-xl p-4">
-                            <div className="flex flex-col flex-grow ml-4">
-                                <div className="text-sm text-gray-500">
-                                <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="rounded-full text-white bg-green-600 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
-                                        Savings Account
-                                    </a>
-                                </div>
-                                </div>
-                                <div className="flex items-center justify-center pt-2">
-                                    <div className="font-bold text-xl text-black">€900.00</div>
-                                    <div className="grow" />
-                                    <EuroIcon className="text-black"/>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-
-                        {/* Stock Card 3 */}
-                        <div className="col-span-12 sm:col-span-6 md:col-span-3 border-2 border-purple-500 rounded-xl">
-                            <div className="flex flex-row bg-white shadow-sm rounded-xl p-4">
-                            <div className="flex flex-col flex-grow ml-4">
-                                <div className="text-sm text-gray-500">
-                                <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="rounded-full text-white bg-purple-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
-                                        ETF Investments
-                                    </a>
-                                </div>
-                                </div>
-                                <div className="flex items-center justify-center pt-2">
-                                    <div className="font-bold text-xl text-black">€3,000.00</div>
-                                    <div className="grow" />
-                                    <CurrencyExchangeIcon className="text-black"/>
+                            {/* Stock Card 5 */}
+                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-yellow-500 rounded-xl">
+                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                    <div className="flex flex-col flex-grow">
+                                        <div className="text-sm text-gray-500">
+                                            <div className="col-span-12 lg:col-span-8">
+                                                <a href="#" className="rounded-full text-white bg-yellow-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
+                                                    Total Balance
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-center pt-2">
+                                            <div className="font-bold text-xl text-black">€510.00</div>
+                                            <div className="grow" />
+                                            <CreditCardOffIcon className="text-black"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>
-
-                        {/* Stock Card 4 */}
-                        <div className="col-span-12 sm:col-span-6 md:col-span-3 border-2 border-red-500 rounded-xl">
-                            <div className="flex flex-row bg-white shadow-sm rounded-xl p-4">
-                            <div className="flex flex-col flex-grow ml-4">
-                                <div className="text-sm text-gray-500">
-                                <div className="col-span-12 lg:col-span-8">
-                                    <a href="#" className="rounded-full text-white bg-red-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center">
-                                        Notice Account
-                                    </a>
-                                </div>
-                                </div>
-                                <div className="flex items-center justify-center pt-2">
-                                    <div className="font-bold text-xl text-black">€510.00</div>
-                                    <div className="grow" />
-                                    <CreditCardOffIcon className="text-black"/>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
                 </div>
-                    
                 </div>
-
                 <div className="mx-auto max-w-7xl z-10">
                     <div className="w-full flex justify-center items-center pb-6">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
@@ -198,8 +212,8 @@ export default function Home() {
                         </form>
                     </div>
                 </div>
-                <div className="flex items-center w-full justify-center pt-12 b-8 z-10">
-                    <div className="w-full bg-slate-200 flex items-center justify-center">
+                <div className="flex items-center w-full justify-center z-10">
+                    <div className="w-full bg-slate-200 flex items-center justify-center mt-12">
                         <div className="p-4 max-w-7xl w-full mb-6">
                             <div className="w-full flex justify-center items-center pb-6">
                                 <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
@@ -207,7 +221,7 @@ export default function Home() {
                                 </h1>
                             </div>
                             <div className="grid flex-col items-center justify-center w-auto h-auto grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-x-16 gap-y-8 text-black">
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -224,7 +238,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </form>
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -241,7 +255,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </form>
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -258,7 +272,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </form>
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -275,7 +289,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </form>
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -292,7 +306,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </form>
-                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-green-500">
+                                <form className="relative sm:mx-auto col-span-1 bg-white to-yellow-500 rounded-xl h-[150px] w-[350px] border-2 border-gray-500">
                                     <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
                                         Payment from Dimitris Kosta
                                     </h2>
@@ -313,7 +327,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className='my-20 w-full bg-white z-10'>
+                <div className='w-full bg-white z-10'>
                     <div className="px-4 mx-auto max-w-7xl lg:px-8 py-8">
                     <div className="w-full flex justify-center items-center">
                         <h1 className="text-3xl font-extrabold text-gray-900 px-4">
