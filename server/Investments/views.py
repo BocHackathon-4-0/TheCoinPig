@@ -33,5 +33,5 @@ class getInvestments(APIView):
 
         return Response(investmentsList, status=status.HTTP_200_OK)
     
-class createInvestment
+# class createInvestment
 
