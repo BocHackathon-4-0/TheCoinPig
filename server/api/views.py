@@ -18,7 +18,7 @@ def get_account_balance(request):
     if access_token_obj is type(int):
         return Response(access_token_obj)
     account_balance = getAccountBalance(access_token_obj, account_id)
-    return Response(account_balance)
+    return Response(account_balance['balances'][0]['amount'])
 
 @api_view(['GET'])
 def get_access_token(request):
