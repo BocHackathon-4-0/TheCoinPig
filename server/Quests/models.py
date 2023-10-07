@@ -52,6 +52,7 @@ class Quest(models.Model):
     # investments_unlocks = models.ManyToManyField('Investments.Investment', blank=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, blank=True, null=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True, null=True)
+    reward = models.FloatField(default=0)
 
     is_active = models.BooleanField(default=True)
 
@@ -69,11 +70,3 @@ class Quest(models.Model):
 
     def __str__(self):
         return self.name
-    
-# class CompleteQuests(models.Model):
-#     user = models.ForeignKey('MyUsers.ChildUser', on_delete=models.CASCADE)
-#     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
-#     is_completed = models.BooleanField(default=False)
-
-#     def __str__(self):
-#         return f"{self.user} - {self.quest}"

@@ -20,3 +20,18 @@ export type TGoal = {
     amount: number;
     achieved: boolean;
 };
+
+export type TQuestionOption = {
+    id: string;
+    text: string;
+};
+
+export type TQuestion = {
+    question: string;
+    options: TQuestionOption[];
+    answerId: string;
+};
+
+export type TQuiz = {
+    questions: TQuestion[];
+};
