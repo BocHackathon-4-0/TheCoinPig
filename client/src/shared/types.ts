@@ -36,3 +36,15 @@ export type TQuestion = {
 export type TQuiz = {
     questions: TQuestion[];
 };
+
+export type TInvestmentProduct = {
+    id: string;
+    name: string;
+    description: string;
+    successRate: number;
+    profitYield: number;
+    neutralRate: number;
+    failRate: number;
+    lossYield: number;
+    frequencyRate: string; // e.g. 3 days or 2 weeks
+};
