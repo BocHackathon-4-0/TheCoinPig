@@ -19,7 +19,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('test/', views.test),
-    path('encodedTest/', views.encodedTest.as_view()),
-    path('create_person/', views.create_person, name='create_person'),
+    path("getAccountStatement/", views.get_account_statement),
+    path("getAccountBalance/", views.get_account_balance),
+    path("getAccessToken/", views.get_access_token),
 ]

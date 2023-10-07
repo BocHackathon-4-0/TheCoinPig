@@ -1,14 +1,14 @@
-from api_objects import api_timeout_obj
+from .api_objects import api_timeout_obj
 import requests
 from datetime import datetime, timedelta
-from api_settings import *
+from .api_settings import *
 
 def getAccessToken():
-    url = OATH_URL
+    url = f'{OATH_URL}/oauth2/token'
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
     # Parameters for the request
-    params = {
+    data = {
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET,
         'grant_type': 'client_credentials',
@@ -17,7 +17,7 @@ def getAccessToken():
 
         
     # Make the GET request
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.post(url, headers=headers, data=data)
 
     # Check if the request was successful
     if response.status_code == 200:
@@ -34,10 +34,10 @@ def getAccessToken():
         return access_token_obj
     return response.status_code
 
-def getAccountStatement(access_token_obj, account_id):
+def getAccountStatement(access_token_obj:api_timeout_obj, account_id):
     if access_token_obj.expired():
         access_token_obj = getAccessToken()
-    url = OATH_URL + f"v1/accounts/{account_id}/statement"
+    url = OATH_URL + f"/v1/accounts/{account_id}/statement"
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {access_token_obj.payload}',
@@ -61,11 +61,11 @@ def getAccountStatement(access_token_obj, account_id):
         return response.json()
     return response.status_code
 
-def getAccountBalance(access_token_obj, account_id):
+def getAccountBalance(access_token_obj:api_timeout_obj, account_id):
     if access_token_obj.expired():
         access_token_obj = getAccessToken() 
     
-    url = OATH_URL + f"v1/accounts/{account_id}/balance"
+    url = OATH_URL + f"/v1/accounts/{account_id}/balance"
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {access_token_obj.payload}',
