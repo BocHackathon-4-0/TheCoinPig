@@ -8,36 +8,45 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { ACCOUNTS } from "@/shared/constants";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 import { useCookies } from "@/hooks/useCookies";
+import { apiFetch } from "@/shared/utils";
 
 export default function Login() {
     const router = useRouter();
     const { enqueueSnackbar } = useSnackbar();
     const [_, setCookie] = useCookies();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const data = new FormData(event.currentTarget);
+        try {
+            const data = new FormData(event.currentTarget);
 
-        const username = data.get("username");
-        const password = data.get("password");
+            const username = data.get("username");
+            const password = data.get("password");
 
-        const account = ACCOUNTS.find(
-            (account) => account.username === username
-        );
+            const res = await apiFetch(
+                `users/validate_user/?username=${username}&password=${password}`
+            );
 
-        if (account === undefined || account.password !== password) {
+            if (!res.ok) throw new Error();
+
+            const resData = await res.json();
+
+            console.log({ res });
+
+            setCookie("auth", {
+                uid: resData.user_id,
+                username,
+                permissions: resData.permission,
+            });
+            router.push("/");
+        } catch (e) {
             enqueueSnackbar("Invalid details!", { variant: "error" });
             event.currentTarget.reset();
-            return;
         }
-
-        setCookie("auth", account);
-        router.push("/");
     };
 
     return (
