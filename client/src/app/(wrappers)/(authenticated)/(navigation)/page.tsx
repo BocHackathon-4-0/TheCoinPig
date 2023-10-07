@@ -26,23 +26,21 @@ export default function Home() {
             }}
             className="w-full flex flex-col justify-center items-center overflow-y-auto h-full"
         >
-            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[1300px]">
-            <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
-                <div 
-                    className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-400 via-green-300 to-pink-300 opacity-70 rotate-0" 
-                    style={{ 
-                    clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
-                    }}
-                />
-            </div>
-            <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
-                <div 
-                    className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-300 via-green-300 to-pink-400 opacity-70 rotate-180" 
-                    style={{ 
-                    clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
-                    }}
-                />
-            </div>
+            <div className="grid grid-cols-3 max-w-7xl gap-x-16 mt-[1335px]">
+                <div className="absolute inset-x-0 overflow-hidden z-0 transform-gpu blur-3xl" aria-hidden="true">
+                    <div 
+                        className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-600 via-green-300 to-green-400 opacity-80 rotate-0" 
+                        style={{ 
+                        clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
+                        }}
+                    />
+                    <div 
+                        className="relative z-10 aspect-[2/1] w-[100%] h-[250px] max-w-none bg-gradient-to-tr from-pink-600 via-pink-300 to-green-400 opacity-40 rotate-180" 
+                        style={{ 
+                        clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' 
+                        }}
+                    />
+                </div>
                 <div className="flex flex-col justify-end items-end col-span-1 font-semibold tracking-[-4px] z-10">
                     <h1 className="text-black text-8xl">
                         The

@@ -234,7 +234,7 @@ export default function Page() {
                                                     Euro
                                                 </span>
                                             </p>
-                                            <a href="notice-account-creation" className="mt-10 block w-full rounded-md bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                                            <a href="invest/notice-account-creation" className="mt-10 block w-full rounded-md bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                                                 Open account
                                             </a>
                                             <p className="mt-6 text-xs leading-5 text-gray-600">
