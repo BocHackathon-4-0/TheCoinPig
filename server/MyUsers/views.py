@@ -10,8 +10,8 @@ from rest_framework.response import Response
 class CheckUserCredentials(APIView):
     def get(self, request):
         
-        username = request.headers.get("username")
-        password = request.headers.get("password")
+        username = request.data.get("username")
+        password = request.data.get("password")
 
         user = User.objects.all()
 
@@ -21,6 +21,8 @@ class CheckUserCredentials(APIView):
 
             user_id = curr_user.get().id
             balance = curr_user.get().balance
+
+            print(user_id)
 
             data = {
                 "message": "User exists",
@@ -36,4 +38,4 @@ class CheckUserCredentials(APIView):
             }
             status_code = status.HTTP_404_NOT_FOUND
             return Response(data, status=status_code)
-    
+        
