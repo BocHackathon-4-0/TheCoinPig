@@ -3,7 +3,7 @@ from django.db import models
 import random
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
-from datetime import datetime
+from datetime import datetime, timedelta
 # Create your models here.
 class InvestmentProduct(models.Model):
     name = models.CharField(max_length=64)
@@ -38,7 +38,7 @@ class Investment(models.Model):
     product = models.ForeignKey(InvestmentProduct, on_delete=models.CASCADE, related_name='investments')
     start_amount = models.FloatField(default=0)
     reward = models.FloatField(blank=True, null=True)
-    start_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(default=datetime.now)
     end_date = models.DateTimeField(blank=True, null=True)
 
     def caluclateReward(self):
@@ -113,9 +113,9 @@ class NoticeInvestment(Investment):
 
 
     def save(self, *args, **kwargs):
-
         if self.pk and self.notice_sent and NoticeInvestment.objects.get(pk=self.pk).notice_sent == False:
             self.notice_settlement_date = datetime.now() + self.product.notice_duration if datetime.now() + self.product.notice_duration < self.end_date else  self.end_date
+        super().save(self, *args, **kwargs)
 
     def __str__(self):
         return f'{self.user} - {self.product}'
