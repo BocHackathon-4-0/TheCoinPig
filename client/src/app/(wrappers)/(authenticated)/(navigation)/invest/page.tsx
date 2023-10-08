@@ -24,8 +24,8 @@ export default function Page() {
     >([]);
     const [cookies] = useCookies();
 
-    useEffect(() => {
-        apiFetch(`investments/getInvestments/?uid=${cookies.auth?.uid}`)
+    const fetch = async () => {
+        await apiFetch(`investments/getInvestments/?uid=${cookies.auth?.uid}`)
             .then((res) => res.json())
             .then((res) =>
                 setProductsWithInvestment(
@@ -65,6 +65,10 @@ export default function Page() {
                     )
                 )
             );
+    };
+
+    useEffect(() => {
+        fetch();
     }, []);
     return (
         <div className="overflow-y-auto h-full">
@@ -86,7 +90,9 @@ export default function Page() {
                         {productsWithInvestment.filter(
                             (rec) => rec.currentInvestment !== undefined
                         ).length === 0 ? (
-                            <CircularProgress />
+                            <h4 className="flex-none text-lg font-semibold leading-6 text-green-600">
+                                No active investments.
+                            </h4>
                         ) : (
                             <div className="flex flex-row overflow-x-auto gap-4 p-2">
                                 {productsWithInvestment
@@ -159,17 +165,15 @@ export default function Page() {
                                     <div className="p-8 sm:p-10 lg:flex-auto">
                                         <div className="flex items-center">
                                             <h3 className="text-4xl font-bold tracking-tight text-gray-900">
-                                                {product.name}
-                                                {product.isNotice === true &&
-                                                    " |"}
+                                                {product.name} |
                                             </h3>
-                                            {product.isNotice === true && (
-                                                <Image
-                                                    src={BOCIcon}
-                                                    alt="Bank of Cyprus logo"
-                                                    className="w-[240px] h-auto ml-2"
-                                                />
-                                            )}
+                                            {/* {product.isNotice === true && ( */}
+                                            <Image
+                                                src={BOCIcon}
+                                                alt="Bank of Cyprus logo"
+                                                className="w-[240px] h-auto ml-2"
+                                            />
+                                            {/* )} */}
                                         </div>
                                         <p className="mt-6 text-lg leading-7 text-gray-600">
                                             {product.description}
@@ -261,6 +265,7 @@ export default function Page() {
                                                         productName={
                                                             product.name
                                                         }
+                                                        callback={fetch}
                                                     />
                                                 )}
 
