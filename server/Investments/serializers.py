@@ -24,6 +24,7 @@ class NoticeInvestmentSerializer(serializers.ModelSerializer):
 class NoticeProductSerializer(serializers.ModelSerializer): 
     frequency_readable = serializers.SerializerMethodField()
 
+
     def get_frequency_readable(self, obj):
         return duration_to_readable(obj.frequency)
     class Meta:
