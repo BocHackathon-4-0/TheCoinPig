@@ -54,7 +54,7 @@ class getInvestments(APIView):
             else:
                 data = InvestmentProductSerializer(product).data
             
-            if user_investments.filter(id=product, end_date__gt=datetime.now()).exists():
+            if user_investments.filter(id=product.id, end_date__gt=datetime.now()).exists():
                 data['currentInvestment'] = InvestmentSerializer(user_investments.get(product=product)).data
             investmentsList.append(data)
 
