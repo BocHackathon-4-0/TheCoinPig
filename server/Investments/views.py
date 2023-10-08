@@ -49,14 +49,17 @@ class getInvestments(APIView):
         investmentsList = []
         for product in all_investment_products:
             if NoticeProduct.objects.filter(id=product.id).exists():
-                NoticeProduct.objects.get(id=product.id)
-                data = NoticeProductSerializer(product).data
+                data = NoticeProductSerializer(NoticeProduct.objects.get(id=product.id)).data
+                #test
                 data['is_notice'] = True
             else:
-                data = InvestmentProductSerializer(product).data
+                data =  InvestmentProductSerializer(product).data
             
             if user_investments.filter(id=product.id, end_date__gt=datetime.now()).exists():
+                data['currentInvestment'] = NoticeInvestmentSerializer(user_investments.get(product=product)).data
+            else:
                 data['currentInvestment'] = InvestmentSerializer(user_investments.get(product=product)).data
+
             investmentsList.append(data)
 
 
