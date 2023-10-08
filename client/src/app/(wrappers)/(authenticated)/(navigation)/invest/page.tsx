@@ -226,9 +226,19 @@ export default function Page() {
                         {productsWithInvestment.map((product) => (
                             <div className="mt-16 rounded-xl bg-gray-200 sm:mt-10 lg:mx-0 lg:flex lg:w-7xl">
                                 <div className="p-8 sm:p-10 lg:flex-auto">
-                                    <h3 className="text-4xl font-bold tracking-tight text-gray-900">
-                                        {product.name}
-                                    </h3>
+                                    <div className="flex items-center">
+                                        <h3 className="text-4xl font-bold tracking-tight text-gray-900">
+                                            {product.name}
+                                            {product.isNotice === true && " |"}
+                                        </h3>
+                                        {product.isNotice === true && (
+                                            <Image
+                                                src={BOCIcon}
+                                                alt="Bank of Cyprus logo"
+                                                className="w-[240px] h-auto ml-2"
+                                            />
+                                        )}
+                                    </div>
                                     <p className="mt-6 text-lg leading-7 text-gray-600">
                                         {product.description}
                                     </p>

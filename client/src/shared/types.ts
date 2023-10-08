@@ -44,6 +44,7 @@ export type TInvestmentProduct = {
     id: string;
     name: string;
     description: string;
+    isNotice?: boolean;
     successRate: number;
     profitYield: number;
     neutralRate: number;
