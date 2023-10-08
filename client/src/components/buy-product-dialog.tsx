@@ -15,11 +15,13 @@ import { useCookies } from "@/hooks/useCookies";
 type TBuyProductDialog = {
     productId: string;
     productName: string;
+    callback: () => any;
 };
 
 export default function BuyProductDialog({
     productId,
     productName,
+    callback,
 }: TBuyProductDialog) {
     const [open, setOpen] = React.useState(false);
     const { enqueueSnackbar } = useSnackbar();
@@ -35,7 +37,7 @@ export default function BuyProductDialog({
         console.log({ amount });
 
         if (amount !== null) {
-            apiFetch("investments/createInvestment/", {
+            await apiFetch("investments/createInvestment/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,6 +48,7 @@ export default function BuyProductDialog({
                     amount: Number(amount),
                 }),
             });
+            await callback();
             setOpen(false);
         } else {
             enqueueSnackbar("Invalid data!", { variant: "error" });
