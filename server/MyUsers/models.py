@@ -6,6 +6,7 @@ class User(AbstractUser):
     name = models.CharField(max_length=255)
     balance = models.FloatField(default=0)
     is_parent = models.BooleanField(default=True)
+    account_id = models.BigIntegerField(default=0)
 
 
     def __str__ (self):
