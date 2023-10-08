@@ -45,7 +45,10 @@ class GetBalances(APIView):
         access_token_obj = getAccessToken()
         if access_token_obj is type(int):
             return Response(access_token_obj)
-        balance = getAccountBalance(access_token_obj, user.account_id)[0]['balances'][0]['amount']
+        balance = getAccountBalance(access_token_obj, user.account_id)
+        if type(balance) == int:
+            return Response(balance)
+        balance = balance[0]['balances'][0]['amount']
 
         user.balance = balance
         user.save()
