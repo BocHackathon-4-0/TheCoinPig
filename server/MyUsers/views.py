@@ -42,7 +42,10 @@ class GetBalances(APIView):
     def get(self, request):
         user_id = request.query_params.get("user_id")
         user = get_object_or_404(User, id=user_id)
-        balance = getAccountBalance(getAccessToken(), user.account_id)[0]['balances'][0]['amount']
+        access_token_obj = getAccessToken()
+        if access_token_obj is type(int):
+            return Response(access_token_obj)
+        balance = getAccountBalance(access_token_obj, user.account_id)[0]['balances'][0]['amount']
 
         user.balance = balance
         user.save()

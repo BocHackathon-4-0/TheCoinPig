@@ -18,7 +18,9 @@ def get_account_statement(request):
 
 @api_view(['GET'])
 def get_account_balance(request):
-    account_id = request.query_params.get("account_id")
+    user_id = request.query_params.get("user_id")
+    user = get_object_or_404(User, id=user_id)
+    account_id = user.account_id    
     access_token_obj = getAccessToken()
     if access_token_obj is type(int):
         return Response(access_token_obj)
