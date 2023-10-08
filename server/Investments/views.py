@@ -49,6 +49,7 @@ class getInvestments(APIView):
         investmentsList = []
         for product in all_investment_products:
             if NoticeProduct.objects.filter(id=product.id).exists():
+                NoticeProduct.objects.get(id=product.id)
                 data = NoticeProductSerializer(product).data
                 data['is_notice'] = True
             else:
@@ -70,6 +71,7 @@ class createInvestment(APIView):
         user = get_object_or_404(ChildUser, id=uid)
         product = get_object_or_404(InvestmentProduct, id=product_id)
         if NoticeProduct.objects.filter(id=product.id).exists():
+            product = get_object_or_404(NoticeProduct, id=product_id)
             is_notice = True
         if user.balance < float(amount):
             return Response({"message": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST)
