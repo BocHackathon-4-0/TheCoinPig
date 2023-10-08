@@ -14,6 +14,7 @@
     "@fontsource/comfortaa": "^5.0.14",
     "@mui/icons-material": "^5.14.12",
     "@mui/material": "^5.14.12",
+    "lodash": "^4.17.21",
     "next": "13.5.4",
     "notistack": "^3.0.1",
     "react": "^18",

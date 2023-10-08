@@ -4,7 +4,7 @@ import random
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime, timedelta
-# Create your models here.
+
 class InvestmentProduct(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()
@@ -22,8 +22,9 @@ class InvestmentProduct(models.Model):
             raise ValidationError("The sum of success_rate, neutral_rate, and failure_rate must be 100.")
 
     def save(self, *args, **kwargs):
-        self.full_clean()  # Validate before saving
+        self.full_clean()
         super().save(*args, **kwargs)
+    
     def __str__(self):
         return self.name
 
@@ -32,7 +33,6 @@ class NoticeProduct(InvestmentProduct):
     notice_duration = models.DurationField(help_text="The duration you need to wait after giving a notice")
 
 
-    
 class Investment(models.Model):
     user = models.ForeignKey('MyUsers.ChildUser', on_delete=models.CASCADE, related_name='investments')
     product = models.ForeignKey(InvestmentProduct, on_delete=models.CASCADE, related_name='investments')
@@ -47,32 +47,36 @@ class Investment(models.Model):
 
         outcome = random.choices(outcome_options, probabilities, k=1)[0]   
         if outcome == "Success":
-            self.reward = self.start_amount * self.product.profit_yield
+            self.reward = self.start_amount * self.product.profit_yield/100
         elif outcome == "Neutral":
-            self.reward = self.start_amount
+            self.reward = 0
         elif outcome == "Fail":
-            self.reward = -(self.start_amount * self.product.loss_yield)
+            self.reward = -(self.start_amount * self.product.loss_yield/100)
 
     def withdraw(self, amount):
         if float(amount) > self.start_amount:
             raise ValidationError("Amount to withdraw is greater than available balance")
         self.start_amount -= float(amount)
         self.caluclateReward()
-
+        self.save()
         self.user.balance += float(amount)
+        self.user.save()
     
     def deposit(self, amount):
         if float(amount) > self.user.balance:
             raise ValidationError("Amount to deposit is greater than available balance")
         self.start_amount += float(amount)
         self.caluclateReward()
-
+        self.save()
         self.user.balance -= float(amount)
+        self.user.save()
 
     def reward_distribution(self):
-        self.user.balance += self.reward
+        self.user.balance += self.start_amount + self.reward
         if self.user.parent.balance >= self.reward:
             self.user.parent.balance -= self.reward
+            self.user.parent.save()
+        self.user.save()
             
 
     def save(self, *args, **kwargs):
@@ -95,18 +99,23 @@ class NoticeInvestment(Investment):
         super().withdraw(amount)
         try:
             self.user.balance -= self.product.penalty
+            self.user.save()
         except:
-            pass
+            print("Error on withdraw on notice penalty fee")
     
 
     def NoticeWithdraw(self, amount):
         if float(amount) > self.start_amount:
             raise ValidationError("Amount to withdraw is greater than available balance")
+        if self.notice_sent:
+            raise ValidationError("Notice already sent")
         
         self.start_amount -= float(amount)
         self.caluclateReward()
 
         self.pending_withdraw_balance += float(amount)
+        self.notice_given = True
+        self.save()
 
         asyncio.run(self.execute_after_delay(self, amount, (self.notice_settlement_date - datetime.now()).total_seconds()))
     
@@ -115,6 +124,9 @@ class NoticeInvestment(Investment):
         print("Executing NoticeWithdraw function.")
         self.pending_withdraw_balance -= float(amount)
         self.user.balance += float(amount)
+        self.notice_given = False
+        self.user.save()
+        self.save()
 
 
 

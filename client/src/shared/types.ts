@@ -24,18 +24,19 @@ export type TGoal = {
 };
 
 export type TQuestionOption = {
-    id: string;
+    id: number;
     text: string;
 };
 
 export type TQuestion = {
-    questionId: string;
+    questionId: number;
     question: string;
     options: TQuestionOption[];
-    answerId: string;
+    answerId: number;
 };
 
 export type TQuiz = {
+    title: string;
     questions: TQuestion[];
 };
 
@@ -43,10 +44,34 @@ export type TInvestmentProduct = {
     id: string;
     name: string;
     description: string;
+    isNotice?: boolean;
     successRate: number;
     profitYield: number;
     neutralRate: number;
     failRate: number;
     lossYield: number;
     frequencyRate: string; // e.g. 3 days or 2 weeks
+};
+
+export type TQuest = {
+    id: number;
+    name: string;
+    description: string;
+    categoryId: number;
+    order: number;
+    state?: "unlocked" | "completed";
+};
+
+export type TQuestCategory = {
+    id: number;
+    title: string;
+};
+
+export type TInvestment = {
+    id: number;
+    startAmount: number;
+    reward: number;
+    startDate: string;
+    endDate: string;
+    productId: string;
 };

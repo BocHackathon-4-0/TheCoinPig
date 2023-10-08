@@ -34,7 +34,19 @@ def getAccessToken():
         return access_token_obj
     return response.status_code
 
-def getAccountStatement(access_token_obj:api_timeout_obj, account_id):
+def stripAccountStatement(account_statement_response, k=6):    
+    # Sort transactions by posting date in descending order
+    transactions = sorted(account_statement_response.json()["transaction"], key=lambda x: x["postingDate"])
+    
+    # Get the latest k transactions
+    try:
+        latest_transactions = transactions[:k]
+    except:
+        latest_transactions = transactions
+    
+    return latest_transactions
+
+def getAccountStatement(access_token_obj:api_timeout_obj, account_id, num_latest_transactions=6):
     if access_token_obj.expired():
         access_token_obj = getAccessToken()
     url = OATH_URL + f"/v1/accounts/{account_id}/statement"
@@ -58,7 +70,8 @@ def getAccountStatement(access_token_obj:api_timeout_obj, account_id):
     # Check if the request was successful
     if response.status_code == 200:
         # Parse the JSON response
-        return response.json()
+        # return response.json()
+        return stripAccountStatement(response, num_latest_transactions)
     return response.status_code
 
 def getAccountBalance(access_token_obj:api_timeout_obj, account_id):

@@ -10,9 +10,10 @@ import {
     TableRow,
 } from "@mui/material";
 import { TGoal } from "@/shared/types";
-import { ChangeEventHandler, MouseEvent } from "react";
+import { ChangeEventHandler, MouseEvent, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import GoalBalanceDialog from "./goal-balance-dialog";
 
 type TGoalsTableProps = {
     count: number;
@@ -51,82 +52,102 @@ export const GoalsTable = (props: TGoalsTableProps) => {
     const selectedSome = selected.length > 0 && selected.length < data.length;
     const selectedAll = data.length > 0 && selected.length === data.length;
 
-    return (
-        <Card sx={{ borderRadius: 3 }}>
-            <Box sx={{ minWidth: 800 }}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell padding="checkbox">
-                                <Checkbox
-                                    checked={selectedAll}
-                                    indeterminate={selectedSome}
-                                    onChange={(event) => {
-                                        if (event.target.checked) {
-                                            onSelectAll?.();
-                                        } else {
-                                            onDeselectAll?.();
-                                        }
-                                    }}
-                                />
-                            </TableCell>
-                            <TableCell>Title</TableCell>
-                            <TableCell>Description</TableCell>
-                            <TableCell>Current Balance</TableCell>
-                            <TableCell>Target Balance</TableCell>
-                            <TableCell>Achieved</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.map((goal) => {
-                            const isSelected = selected.includes(goal.id);
+    const [goalToMoveBalance, setGoalToMoveBalance] = useState<TGoal>();
 
-                            return (
-                                <TableRow
-                                    hover
-                                    key={goal.id}
-                                    selected={isSelected}
-                                >
-                                    <TableCell padding="checkbox">
-                                        <Checkbox
-                                            checked={isSelected}
-                                            onChange={(event) => {
-                                                if (event.target.checked) {
-                                                    onSelectOne?.(goal.id);
-                                                } else {
-                                                    onDeselectOne?.(goal.id);
-                                                }
-                                            }}
-                                        />
-                                    </TableCell>
-                                    <TableCell>{goal.title}</TableCell>
-                                    <TableCell>
-                                        {goal.description ?? ""}
-                                    </TableCell>
-                                    <TableCell>{goal.currentBalance}</TableCell>
-                                    <TableCell>{goal.targetBalance}</TableCell>
-                                    <TableCell>
-                                        {goal.achieved ? (
-                                            <DoneIcon color="success" />
-                                        ) : (
-                                            <CloseIcon color="error" />
-                                        )}
-                                    </TableCell>
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </Box>
-            <TablePagination
-                component="div"
-                count={count}
-                onPageChange={onPageChange}
-                onRowsPerPageChange={onRowsPerPageChange}
-                page={page}
-                rowsPerPage={rowsPerPage}
-                rowsPerPageOptions={[5, 10, 25]}
-            />
-        </Card>
+    return (
+        <>
+            <Card sx={{ borderRadius: 3 }}>
+                <Box sx={{ minWidth: 800 }}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell padding="checkbox">
+                                    <Checkbox
+                                        checked={selectedAll}
+                                        indeterminate={selectedSome}
+                                        onChange={(event) => {
+                                            if (event.target.checked) {
+                                                onSelectAll?.();
+                                            } else {
+                                                onDeselectAll?.();
+                                            }
+                                        }}
+                                    />
+                                </TableCell>
+                                <TableCell>Title</TableCell>
+                                <TableCell>Description</TableCell>
+                                <TableCell>Current Balance</TableCell>
+                                <TableCell>Target Balance</TableCell>
+                                <TableCell>Achieved</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map((goal) => {
+                                const isSelected = selected.includes(goal.id);
+
+                                return (
+                                    <TableRow
+                                        hover
+                                        key={goal.id}
+                                        selected={isSelected}
+                                        onClick={() =>
+                                            setGoalToMoveBalance(goal)
+                                        }
+                                    >
+                                        <TableCell padding="checkbox">
+                                            <Checkbox
+                                                checked={isSelected}
+                                                onChange={(event) => {
+                                                    if (event.target.checked) {
+                                                        onSelectOne?.(goal.id);
+                                                    } else {
+                                                        onDeselectOne?.(
+                                                            goal.id
+                                                        );
+                                                    }
+                                                }}
+                                            />
+                                        </TableCell>
+                                        <TableCell>{goal.title}</TableCell>
+                                        <TableCell>
+                                            {goal.description ?? ""}
+                                        </TableCell>
+                                        <TableCell>
+                                            {goal.currentBalance}
+                                        </TableCell>
+                                        <TableCell>
+                                            {goal.targetBalance}
+                                        </TableCell>
+                                        <TableCell>
+                                            {goal.achieved ? (
+                                                <DoneIcon color="success" />
+                                            ) : (
+                                                <CloseIcon color="error" />
+                                            )}
+                                        </TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </Box>
+                <TablePagination
+                    component="div"
+                    count={count}
+                    onPageChange={onPageChange}
+                    onRowsPerPageChange={onRowsPerPageChange}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    rowsPerPageOptions={[5, 10, 25]}
+                />
+            </Card>
+            {goalToMoveBalance !== undefined && (
+                <GoalBalanceDialog
+                    goalId={goalToMoveBalance.id}
+                    goalTitle={goalToMoveBalance.title}
+                    callback={() => setGoalToMoveBalance(undefined)}
+                />
+            )}
+        </>
     );
 };

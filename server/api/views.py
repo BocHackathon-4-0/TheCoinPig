@@ -5,10 +5,12 @@ from .api import *
 @api_view(['GET'])
 def get_account_statement(request):
     account_id = request.query_params.get("account_id")
+    num_latest_transactions = request.query_params.get("num_latest_transactions", 6)
     access_token_obj = getAccessToken()
     if access_token_obj is type(int):
         return Response(access_token_obj)
-    account_statement = getAccountStatement(access_token_obj, account_id)
+    account_statement = getAccountStatement(access_token_obj, account_id, num_latest_transactions)
+
     return Response(account_statement)
 
 @api_view(['GET'])
