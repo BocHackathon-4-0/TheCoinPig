@@ -147,109 +147,88 @@ export default function Home() {
                                 Balance
                             </h1>
                         </div>
-                        <Grid container direction="row">
-                            <Grid
-                                item
-                                xs
-                                sx={{
-                                    ...(investments.length === 0
-                                        ? {
-                                              display: "flex",
-                                              justifyContent: "center",
-                                              alignItems: "center",
-                                          }
-                                        : {}),
-                                }}
-                            >
-                                {investments.length === 0 ? (
-                                    <CircularProgress sx={{}} />
-                                ) : (
-                                    <div className="grid grid-cols-10 gap-4 pb-8 flex-grow">
-                                        {investments.map((investment) => (
-                                            <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-pink-700 rounded-xl">
-                                                <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
-                                                    <div className="flex flex-col flex-grow">
-                                                        <div className="text-sm text-gray-500">
-                                                            <div className="col-span-12">
-                                                                <a
-                                                                    href="#"
-                                                                    className="rounded-full text-white bg-pink-700 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
-                                                                >
-                                                                    {
-                                                                        investment.productName
-                                                                    }
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div className="flex items-center justify-center pt-2">
-                                                            <div className="font-bold text-xl text-black">
-                                                                {
-                                                                    investment.startAmount
-                                                                }
-                                                            </div>
-                                                            <div className="grow" />
-                                                            <EuroIcon className="text-black" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </Grid>
-                            <Grid item container direction="row">
-                                <Grid item>
-                                    <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-green-500 rounded-xl">
+                        <div className="grid grid-cols-2 gap-x-4">
+                            <div className="col-span-1 grid grid-cols-10 gap-4 pb-8 flex-grow">
+                                {investments.map((investment) => (
+                                    <div className="col-span-12 sm:col-span-6 md:col-span-5 border-2 border-pink-700 rounded-xl">
                                         <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
                                             <div className="flex flex-col flex-grow">
                                                 <div className="text-sm text-gray-500">
-                                                    <div className="col-span-12 lg:col-span-8">
+                                                    <div className="col-span-12">
                                                         <a
                                                             href="#"
-                                                            className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
+                                                            className="rounded-full text-white bg-pink-700 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
                                                         >
-                                                            Total Liquidity
+                                                            {
+                                                                investment.productName
+                                                            }
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center justify-center pt-2">
                                                     <div className="font-bold text-xl text-black">
-                                                        €{liquid}
+                                                        {
+                                                            investment.startAmount
+                                                        }
                                                     </div>
                                                     <div className="grow" />
-                                                    <AccountBalanceWalletIcon className="text-black" />
+                                                    <EuroIcon className="text-black" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </Grid>
-                                <Grid item>
-                                    <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-green-500 rounded-xl">
-                                        <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
-                                            <div className="flex flex-col flex-grow">
-                                                <div className="text-sm text-gray-500">
-                                                    <div className="col-span-12 lg:col-span-8">
-                                                        <a
-                                                            href="#"
-                                                            className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
-                                                        >
-                                                            Total Balance
-                                                        </a>
-                                                    </div>
+                                ))}
+                            </div>
+                            <div className="col-span-1 grid grid-cols-10 gap-4 pb-8 flex-grow">
+                                <div className="col-span-12 sm:col-span-6 md:col-span-5 border-2 border-green-500 rounded-xl">
+                                    <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                        <div className="flex flex-col flex-grow">
+                                            <div className="text-sm text-gray-500">
+                                                <div className="col-span-12 lg:col-span-8">
+                                                    <a
+                                                        href="#"
+                                                        className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
+                                                    >
+                                                        Total Liquidity
+                                                    </a>
                                                 </div>
-                                                <div className="flex items-center justify-center pt-2">
-                                                    <div className="font-bold text-xl text-black">
-                                                        €{balance}
-                                                    </div>
-                                                    <div className="grow" />
-                                                    <AccountBalanceWalletIcon className="text-black" />
+                                            </div>
+                                            <div className="flex items-center justify-center pt-2">
+                                                <div className="font-bold text-xl text-black">
+                                                    €{liquid}
                                                 </div>
+                                                <div className="grow" />
+                                                <AccountBalanceWalletIcon className="text-black" />
                                             </div>
                                         </div>
                                     </div>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                                </div>
+                                <div className="col-span-12 sm:col-span-6 md:col-span-5 border-2 border-green-500 rounded-xl">
+                                    <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                        <div className="flex flex-col flex-grow">
+                                            <div className="text-sm text-gray-500">
+                                                <div className="col-span-12 lg:col-span-8">
+                                                    <a
+                                                        href="#"
+                                                        className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
+                                                    >
+                                                        Total Balance
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center justify-center pt-2">
+                                                <div className="font-bold text-xl text-black">
+                                                    €{balance}
+                                                </div>
+                                                <div className="grow" />
+                                                <AccountBalanceWalletIcon className="text-black" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
