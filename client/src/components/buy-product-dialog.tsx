@@ -35,7 +35,6 @@ export default function BuyProductDialog({
         console.log({ amount });
 
         if (amount !== null) {
-            console.log({ amount: Number(amount) });
             apiFetch("investments/createInvestment/", {
                 method: "POST",
                 headers: {

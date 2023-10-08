@@ -40,6 +40,7 @@ export default function Home() {
         (TInvestment & { productName: string })[]
     >([]);
     const [balance, setBalance] = useState<number>(0);
+    const [liquid, setLiquid] = useState<number>(0);
     const [cookies] = useCookies();
 
     useEffect(() => {
@@ -66,7 +67,12 @@ export default function Home() {
                         )
                 )
             );
-        // FETCH FROM BOC
+        apiFetch(`users/get_balances/?user_id=${cookies.auth?.uid}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setBalance(res.balance);
+                setLiquid(res.liquid_balance);
+            });
     }, []);
     return (
         <Box
@@ -133,9 +139,12 @@ export default function Home() {
             <div className="flex items-center w-full justify-center z-10">
                 <div className="w-full bg-slate-200 flex items-center justify-center mt-12 mb-8">
                     <div className="p-4 max-w-7xl w-full">
-                        <div className="w-full flex justify-center items-center pb-6">
-                            <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
+                        <div className="w-full flex flex-row pb-6">
+                            <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4 flex-grow">
                                 My Portfolio
+                            </h1>
+                            <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4">
+                                Balance
                             </h1>
                         </div>
                         <Grid container direction="row">
@@ -188,31 +197,57 @@ export default function Home() {
                                     </div>
                                 )}
                             </Grid>
-                            <Grid item>
-                                {/* Stock Card 5 */}
-                                <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-green-500 rounded-xl">
-                                    <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
-                                        <div className="flex flex-col flex-grow">
-                                            <div className="text-sm text-gray-500">
-                                                <div className="col-span-12 lg:col-span-8">
-                                                    <a
-                                                        href="#"
-                                                        className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
-                                                    >
-                                                        Total Balance
-                                                    </a>
+                            <Grid item container direction="row">
+                                <Grid item>
+                                    <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-green-500 rounded-xl">
+                                        <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                            <div className="flex flex-col flex-grow">
+                                                <div className="text-sm text-gray-500">
+                                                    <div className="col-span-12 lg:col-span-8">
+                                                        <a
+                                                            href="#"
+                                                            className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
+                                                        >
+                                                            Total Liquidity
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="flex items-center justify-center pt-2">
-                                                <div className="font-bold text-xl text-black">
-                                                    €510.00
+                                                <div className="flex items-center justify-center pt-2">
+                                                    <div className="font-bold text-xl text-black">
+                                                        €{liquid}
+                                                    </div>
+                                                    <div className="grow" />
+                                                    <AccountBalanceWalletIcon className="text-black" />
                                                 </div>
-                                                <div className="grow" />
-                                                <AccountBalanceWalletIcon className="text-black" />
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Grid>
+                                <Grid item>
+                                    <div className="col-span-12 sm:col-span-6 md:col-span-2 border-2 border-green-500 rounded-xl">
+                                        <div className="flex flex-row bg-white shadow-sm rounded-xl p-2 py-4">
+                                            <div className="flex flex-col flex-grow">
+                                                <div className="text-sm text-gray-500">
+                                                    <div className="col-span-12 lg:col-span-8">
+                                                        <a
+                                                            href="#"
+                                                            className="rounded-full text-white bg-green-500 text-xl font-semibold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1 w-full flex items-center justify-center"
+                                                        >
+                                                            Total Balance
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-center pt-2">
+                                                    <div className="font-bold text-xl text-black">
+                                                        €{balance}
+                                                    </div>
+                                                    <div className="grow" />
+                                                    <AccountBalanceWalletIcon className="text-black" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </div>
