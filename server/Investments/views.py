@@ -50,7 +50,7 @@ class getInvestments(APIView):
         for product in all_investment_products:
             if NoticeProduct.objects.filter(id=product.id).exists():
                 data = NoticeProductSerializer(NoticeProduct.objects.get(id=product.id)).data
-
+                #test
                 data['is_notice'] = True
             else:
                 data =  InvestmentProductSerializer(product).data
