@@ -1,3 +1,5 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+
 export type TAccount = {
     uid: string;
     username: string;
@@ -54,6 +56,7 @@ export type TInvestmentProduct = {
 };
 
 export type TQuest = {
+    image: string;
     id: number;
     name: string;
     description: string;

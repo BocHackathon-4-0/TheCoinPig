@@ -40,9 +40,11 @@ export default function QuestGrid({ quests }: { quests: TQuest[] }) {
                             <Link href={`/quests/${quest.id}`}>
                                 <div className="relative w-full overflow-hidden">
                                     <Image
-                                        src={image1}
+                                        src={`http://localhost:8000${quest.image}`}
                                         alt={quest.description}
                                         className="aspect-[16/9] object-cover sm:aspect-[2/1] lg:aspect-[5/2] group-hover:scale-110 sm:group-hover:scale-105 duration-300 z-0"
+                                        height={300}
+                                        width={500}
                                     />
                                 </div>
                                 <div className=" bg-white p-4 w-[100%]">

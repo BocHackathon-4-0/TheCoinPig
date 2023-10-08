@@ -31,6 +31,7 @@ export default function Page() {
                                 categoryId: quest.quest_category,
                                 order: quest.quest_order,
                                 state: quest.state,
+                                image: quest.quest_image,
                             } as TQuest)
                     )
                 )
