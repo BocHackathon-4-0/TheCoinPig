@@ -15,7 +15,7 @@ class InvestmentProduct(models.Model):
     profit_yield = models.FloatField(default=0)
     loss_yield = models.FloatField(default=0)
     frequency = models.DurationField()
-
+    
     def clean(self):
         total_rate = self.success_rate + self.neutral_rate + self.failure_rate
         if total_rate != 100:
@@ -40,7 +40,7 @@ class Investment(models.Model):
     reward = models.FloatField(blank=True, null=True)
     start_date = models.DateTimeField(default=datetime.now)
     end_date = models.DateTimeField(blank=True, null=True)
-
+    #add constraint to add only one investment per product per user
     def caluclateReward(self):
         outcome_options = ['Success', 'Neutral', 'Fail']
         probabilities = [self.product.success_rate/100, self.product.neutral_rate/100, self.product.failure_rate/100]
