@@ -137,14 +137,13 @@ export default function QuestPage({ params: { questId } }: TQuestPageParams) {
                 </div>
             </div>
             
-            <div className="bg-gray-100 w-full h-20 p-2 flex flex-row justify-end items-center">
-                <Button
-                    variant="contained"
+            <div className="absolute right-8 bottom-8">
+                <button
                     onClick={() => router.push(questId + "/quiz")}
-                    className="h-full"
+                    className="h-[50px] w-auto px-6 rounded-xl bg-green-500"
                 >
-                    <Typography variant="h4">Take Quiz</Typography>
-                </Button>
+                    <p className='text-white text-2xl'>Take Quiz</p>
+                </button>
             </div>
         </div>
     );
