@@ -299,11 +299,8 @@ export default function Home() {
                             </h1>
                         </div>
                         <div className="grid flex-col items-center justify-center w-auto h-auto grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-x-16 gap-y-8 text-black">
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
@@ -316,11 +313,8 @@ export default function Home() {
                                     </p>
                                 </div>
                             </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
@@ -333,11 +327,8 @@ export default function Home() {
                                     </p>
                                 </div>
                             </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
@@ -350,11 +341,8 @@ export default function Home() {
                                     </p>
                                 </div>
                             </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
@@ -367,11 +355,8 @@ export default function Home() {
                                     </p>
                                 </div>
                             </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-green-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
@@ -384,11 +369,8 @@ export default function Home() {
                                     </p>
                                 </div>
                             </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[150px] w-[350px] border-2 border-pink-500">
-                                <h2 className="w-auto p-4 text-3xl font-bold tracking-tight break-words sm:text-xl">
-                                    Payment to Dimitris Kosta
-                                </h2>
-                                <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
+                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
                                     Transfer description
                                 </p>
                                 <div className="flex">
