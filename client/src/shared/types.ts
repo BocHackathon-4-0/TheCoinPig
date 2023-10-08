@@ -78,3 +78,15 @@ export type TInvestment = {
     endDate: string;
     productId: string;
 };
+
+export type TTransaction = {
+    id: string;
+    dcInd: string;
+    transactionAmount: {
+        amount: number;
+        currency: string;
+    };
+    description: string;
+    postingDate: string;
+    valueDate: string;
+};

@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, CircularProgress, Grid } from "@mui/material";
+import { Box, Chip, CircularProgress, Grid } from "@mui/material";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import EuroIcon from "@mui/icons-material/Euro";
 import SchoolIcon from "@mui/icons-material/School";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import { TInvestment } from "@/shared/types";
+import { TInvestment, TTransaction } from "@/shared/types";
 import { useCookies } from "@/hooks/useCookies";
 import { apiFetch } from "@/shared/utils";
 
@@ -42,6 +42,7 @@ export default function Home() {
     const [balance, setBalance] = useState<number>(0);
     const [liquid, setLiquid] = useState<number>(0);
     const [cookies] = useCookies();
+    const [transactions, setTransactions] = useState<TTransaction[]>([]);
 
     useEffect(() => {
         apiFetch(`investments/getInvestments/?uid=${cookies.auth?.uid}`)
@@ -72,6 +73,18 @@ export default function Home() {
             .then((res) => {
                 setBalance(res.balance);
                 setLiquid(res.liquid_balance);
+            });
+        apiFetch(`api/getAccountStatement/?user_id=${cookies.auth?.uid}`)
+            .then((res) => res.json())
+            .then((res) => {
+                console.log({ res });
+                setTransactions(
+                    res.map((rec: any) => ({
+                        ...rec,
+                        dcInd: rec.dcInd ?? "DEBIT",
+                        description: rec.description ?? "UNKNOWN",
+                    }))
+                );
             });
     }, []);
     return (
@@ -167,9 +180,7 @@ export default function Home() {
                                                 </div>
                                                 <div className="flex items-center justify-center pt-2">
                                                     <div className="font-bold text-xl text-black">
-                                                        {
-                                                            investment.startAmount
-                                                        }
+                                                        {investment.startAmount}
                                                     </div>
                                                     <div className="grow" />
                                                     <EuroIcon className="text-black" />
@@ -227,7 +238,6 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -278,90 +288,46 @@ export default function Home() {
                             </h1>
                         </div>
                         <div className="grid flex-col items-center justify-center w-auto h-auto grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-x-16 gap-y-8 text-black">
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-green-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
-                            <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
-                                <p className="px-4 mt-3 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                    Transfer description
-                                </p>
-                                <div className="flex">
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        €15
-                                    </p>
-                                    <div className="grow" />
-                                    <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
-                                        28/04/2020
-                                    </p>
-                                </div>
-                            </form>
+                            {transactions.length === 0 ? (
+                                <h4 className="flex-none text-lg font-semibold leading-6 text-green-600">
+                                    No existing transactions.
+                                </h4>
+                            ) : (
+                                transactions.map((transaction) => (
+                                    <form className="relative sm:mx-auto col-span-1 bg-white rounded-xl h-[80px] w-[350px] border-2 border-pink-500">
+                                        <div className="flex flex-row px-4 mt-3">
+                                            <p className=" xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                                {transaction.description}
+                                            </p>
+                                            <div style={{ flexGrow: 1 }} />
+
+                                            <Chip
+                                                label={transaction.dcInd}
+                                                variant="outlined"
+                                            />
+                                        </div>
+
+                                        <div className="flex">
+                                            <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                                {
+                                                    transaction
+                                                        .transactionAmount
+                                                        .amount
+                                                }
+                                                {
+                                                    transaction
+                                                        .transactionAmount
+                                                        .currency
+                                                }
+                                            </p>
+                                            <div className="grow" />
+                                            <p className="px-4 mt-0 xxs:mt-4 text-[calc(5px+3vw)] sm:text-lg">
+                                                {transaction.postingDate}
+                                            </p>
+                                        </div>
+                                    </form>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
