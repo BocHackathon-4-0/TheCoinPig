@@ -133,7 +133,7 @@ export default function Home() {
                             <p className="pt-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
                                 {" "}
                                 <SchoolIcon className="mx-2 text-4xl font-normal text-gray-700" />{" "}
-                                Learn About financial blipblops
+                                Learn about the essentials of finance
                             </p>
                             <p className="py-6 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
                                 {" "}
@@ -143,7 +143,7 @@ export default function Home() {
                             <p className="bg-gradient-to-r from-pink-900 to-pink-500 bg-clip-text text-transparent">
                                 {" "}
                                 <TrendingUpIcon className="mx-2 text-4xl font-normal text-pink-500" />{" "}
-                                Invest in a virtual environment
+                                Invest in a simulated environment
                             </p>
                         </ul>
                     </div>
@@ -152,7 +152,7 @@ export default function Home() {
             <div className="flex items-center w-full justify-center z-10">
                 <div className="w-full bg-slate-200 flex items-center justify-center mt-12 mb-8">
                     <div className="p-4 max-w-7xl w-full">
-                        <div className="w-full flex flex-row pb-6">
+                        <div className="w-full grid grid-cols-2 text-center pb-6">
                             <h1 className="text-3xl font-extrabold text-gray-900 px-4 pt-4 flex-grow">
                                 My Portfolio
                             </h1>
