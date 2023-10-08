@@ -115,14 +115,13 @@ export default function QuizPage({ params: { questId } }: TQuizPageParams) {
                     ))}
                 </div>
             </div>
-            <div className="bg-gray-100 w-full h-20 p-2 flex flex-row justify-end items-center">
-                <Button
-                    variant="contained"
+            <div className="absolute right-8 bottom-8">
+                <button
                     onClick={handleSubmit}
-                    className="h-full"
+                    className="h-[50px] w-auto px-6 rounded-xl bg-green-500"
                 >
-                    <Typography variant="h4">Submit</Typography>
-                </Button>
+                    <p className='text-white text-2xl'>Take Quiz</p>
+                </button>
             </div>
         </div>
     );
